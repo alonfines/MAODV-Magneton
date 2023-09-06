@@ -60,7 +60,7 @@ void AodvModule::broadcastHello()
     AodvPacket *helloPacket = new AodvPacket("HELLO");
     helloPacket->setType(HELLO);
     source_addr = getAddress();
-    helloPacket ->setSourceAddr(int source_addr);
+    helloPacket ->setSourceAddr(source_addr);
     send(helloPacket, "out");
 }
 
