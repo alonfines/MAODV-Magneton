@@ -1,6 +1,7 @@
+import inet.networklayer.configurator.ipv4.Ipv4NetworkConfigurator;
+import inet.networklayer.ipv4.RoutingTableRecorder;
 import inet.applications.contract.IApp;
 
-//
 // Ad hoc On-Demand Distance Vector Routing Protocol module.
 //
 // The Ad hoc On-Demand Distance Vector (AODV) routing protocol is
@@ -16,6 +17,7 @@ import inet.applications.contract.IApp;
 // This implementation is based on RFC 3561. For more information, you may
 // refer to the following link: https://tools.ietf.org/html/rfc3561.html.
 //
+
 simple Aodv like IApp
 {
     parameters:
@@ -69,10 +71,15 @@ simple Aodv like IApp
         output socketOut;
 }
 
+
 network Aodv1
 {
     submodules:
-
+        
+        configurator: Ipv4NetworkConfigurator {
+            @display("p=100,300");
+        }
+        
         A: Aodv {
             @display("p=229,155");
         }
@@ -82,7 +89,7 @@ network Aodv1
         C: Aodv {
             @display("p=492,61");
         }
-        D: Aodv {
+        D: Aodv{
             @display("p=545,167");
         }
         E: Aodv {
