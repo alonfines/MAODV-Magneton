@@ -2,7 +2,7 @@
 # OMNeT++/OMNEST Makefile for Magneton_MAODV
 #
 # This file was generated with the command:
-#  opp_makemake -f --deep -O out -KINET4_PROJ=../inet4 -DINET_IMPORT -I. -I$$\(INET4_PROJ\)/src -L$$\(INET4_PROJ\)/src -lINET$$\(D\)
+#  opp_makemake -f --deep -O out -KINET4_PROJ=C:/omnetpp-5.6.1/samples/inet4 -DINET_IMPORT -I. -I$$\(INET4_PROJ\)/src -L$$\(INET4_PROJ\)/src -lINET$$\(D\)
 #
 
 # Name of target to be created (-o option)
@@ -30,7 +30,7 @@ PROJECTRELATIVE_PATH =
 O = $(PROJECT_OUTPUT_DIR)/$(CONFIGNAME)/$(PROJECTRELATIVE_PATH)
 
 # Object files for local .cc, .msg and .sm files
-OBJS = $O/aodv1.o $O/AodvPacket.o
+OBJS =
 
 # Message files
 MSGFILES =
@@ -39,7 +39,7 @@ MSGFILES =
 SMFILES =
 
 # Other makefile variables (-K)
-INET4_PROJ=../inet4
+INET4_PROJ=C:/omnetpp-5.6.1/samples/inet4
 
 #------------------------------------------------------------------------------
 
