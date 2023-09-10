@@ -1,6 +1,11 @@
 import inet.networklayer.configurator.ipv4.Ipv4NetworkConfigurator;
+import inet.networklayer.ipv4.*;
 import inet.networklayer.ipv4.RoutingTableRecorder;
 import inet.applications.contract.IApp;
+import inet.common.*;
+import inet.networklayer.*;
+import inet.node.aodv.AodvRouter;
+import inet.physicallayer.unitdisk.UnitDiskRadioMedium;
 
 // Ad hoc On-Demand Distance Vector Routing Protocol module.
 //
@@ -21,7 +26,8 @@ import inet.applications.contract.IApp;
 simple Aodv like IApp
 {
     parameters:
-        @class("aodv::Aodv");
+        @networkNode;
+        @class("inet::aodv::Aodv");
         @display("i=block/network2");
         string routingTableModule = default("^.ipv4.routingTable");
         string interfaceTableModule = default("^.interfaceTable");
@@ -69,46 +75,77 @@ simple Aodv like IApp
     gates:
         input socketIn;
         output socketOut;
+        //output socketOut2;
 }
 
 
-network Aodv1
+network AodvNetwork
 {
+    parameters:
+        
+        int numNodes = 5; // defines the number of nodes
+        
     submodules:
         
-        configurator: Ipv4NetworkConfigurator {
-            @display("p=100,300");
+     	configurator: Ipv4NetworkConfigurator {
+            parameters:
+                config = xml("<config><interface hosts='*' address='145.236.x.x' netmask='255.255.0.0'/></config>");
+                @display("p=100,100;is=s");
         }
         
-        A: Aodv {
-            @display("p=229,155");
-        }
-        B: Aodv {
-            @display("p=357,100");
-        }
-        C: Aodv {
-            @display("p=492,61");
-        }
-        D: Aodv{
-            @display("p=545,167");
-        }
-        E: Aodv {
-
-            @display("p=412,219");
-        }
-
-
-
-    connections:
-        A.socketOut --> {  delay = nodeTraversalTime; } --> B.socketIn;
-        B.socketOut --> {  delay = nodeTraversalTime; } --> A.socketIn;
-        C.socketOut --> {  delay = nodeTraversalTime; } --> B.socketIn;
-        B.socketOut --> {  delay = nodeTraversalTime; } --> C.socketIn;
-        D.socketOut --> {  delay = nodeTraversalTime; } --> C.socketIn;
-        C.socketOut --> {  delay = nodeTraversalTime; } --> D.socketIn;
-        D.socketOut --> {  delay = nodeTraversalTime; } --> E.socketIn;
-        E.socketOut --> {  delay = nodeTraversalTime; } --> D.socketIn;
-        D.socketOut --> {  delay = nodeTraversalTime; } --> E.socketIn;
+   	node[numNodes]: Aodv;
+       
+   	connections:
+   	    
+		for i=0..numNodes-2 {
+            node[i].socketOut --> node[i+1].socketIn;
+            //node[i+1].socketOut2 --> node[i].socketIn;
+    }
+    	node[4].socketOut --> node[0].socketIn;
+    	
+       
 
 }
+
+network AodvNetworkWithAodvRouters
+{
+    parameters:
+    submodules:
+        
+		radioMedium: UnitDiskRadioMedium {
+            parameters:
+                @display("p=100,200;is=s");
+        }
+        configurator: Ipv4NetworkConfigurator {
+            parameters:
+                addDefaultRoutes = false;
+                addStaticRoutes = false;
+                addSubnetRoutes = false;
+                config = xml("<config><interface hosts='*' address='145.236.x.x' netmask='255.255.0.0'/></config>");
+                @display("p=100,100;is=s");
+        }
+        routingTableRecorder: RoutingTableRecorder {
+            parameters:
+                @display("p=100,300;is=s");
+        }
+       
+        sender: AodvRouter {
+            parameters:
+                @display("i=device/pocketpc_s;r=,,#707070;p=284,51");
+        }
+        intermediateNodeA: AodvRouter {
+            parameters:
+                @display("i=device/pocketpc_s;r=,,#707070;p=203,206");
+        }
+        intermediateNodeB: AodvRouter {
+            parameters:
+                @display("i=device/pocketpc_s;r=,,#707070;p=386,206");
+        }
+        receiver: AodvRouter {
+            parameters:
+                @display("i=device/pocketpc_s;r=,,#707070;p=284,378");
+        }
+    connections allowunconnected:
+}
+
 
