@@ -6,13 +6,13 @@ import inet.networklayer.ipv4.RoutingTableRecorder;
 import inet.node.aodv.AodvRouter;
 import inet.physicallayer.unitdisk.UnitDiskRadioMedium;
 
-
 network AODVNetwork
 {
     parameters:
         int numHosts;
         @display("bgb=650,650;bgi=background/streetmap;bgu=m");
     submodules:
+
         radioMedium: UnitDiskRadioMedium {
             parameters:
                 @display("p=100,200;is=s");
