@@ -1,0 +1,167 @@
+file 8169 1694348620                                            
+version 2
+run IPv4SlowMobility-0-20230910-15:22:48-37672
+attr configname IPv4SlowMobility
+attr datetime 20230910-15:22:48
+attr experiment IPv4SlowMobility
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsf ""
+attr measurement ""
+attr network AodvNetwork
+attr processid 37672
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+param **.aodv.activeRouteTimeout 3s
+param **.host[2..20].mobility.typename "\"MassMobility\""
+param **.host[0].mobility.typename "\"StationaryMobility\""
+param **.host[1].mobility.typename "\"StationaryMobility\""
+param **.host[*].mobility.changeInterval "normal(5s, 0.1s)"
+param **.host[*].mobility.angleDelta "normal(0deg, 30deg)"
+param **.host[*].mobility.speed "normal(2mps, 0.01mps)"
+param **.host[1].mobility.initialX 600m
+param **.host[1].mobility.initialY 600m
+param *.host[*].wlan[*].radio.transmitter.communicationRange 250m
+param *.host[0].app[0].destAddr "\"host[1](ipv4)\""
+param **.wlan[*].typename "\"AckingWirelessInterface\""
+param **.wlan[*].bitrate 2Mbps
+param **.wlan[*].mac.headerLength 23B
+param **.wlan[*].radio.typename "\"UnitDiskRadio\""
+param **.wlan[*].radio.transmitter.headerLength 96b
+param **.wlan[*].radio.transmitter.communicationRange 250m
+param **.wlan[*].radio.transmitter.interferenceRange 0m
+param **.wlan[*].radio.transmitter.detectionRange 0m
+param **.wlan[*].radio.receiver.ignoreInterference true
+param *.numHosts 5
+param **.host[*].mobility.typename "\"StationaryMobility\""
+param **.mobility.constraintAreaMinZ 0m
+param **.mobility.constraintAreaMaxZ 0m
+param **.mobility.constraintAreaMinX 0m
+param **.mobility.constraintAreaMinY 0m
+param **.mobility.constraintAreaMaxX 600m
+param **.mobility.constraintAreaMaxY 600m
+param *.host[0].numApps 1
+param *.host[0].app[0].typename "\"PingApp\""
+param *.host[0].app[0].startTime uniform(1s,5s)
+param *.host[0].app[0].printPing true
+param **.wlan[*].bitrate 2Mbps
+param **.hasStatus true
+
+vector 0 AodvNetwork.host[0].wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr source radioModeChanged
+attr title "Radio mode, vector"
+vector 1 AodvNetwork.host[1].wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr source radioModeChanged
+attr title "Radio mode, vector"
+vector 2 AodvNetwork.host[2].wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr source radioModeChanged
+attr title "Radio mode, vector"
+vector 3 AodvNetwork.host[3].wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr source radioModeChanged
+attr title "Radio mode, vector"
+vector 4 AodvNetwork.host[4].wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr source radioModeChanged
+attr title "Radio mode, vector"
+vector 5 AodvNetwork.host[0].wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr source receptionStateChanged
+attr title "Radio reception state, vector"
+vector 6 AodvNetwork.host[0].wlan[0].radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "Radio transmission state, vector"
+vector 7 AodvNetwork.host[1].wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr source receptionStateChanged
+attr title "Radio reception state, vector"
+vector 8 AodvNetwork.host[1].wlan[0].radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "Radio transmission state, vector"
+vector 9 AodvNetwork.host[2].wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr source receptionStateChanged
+attr title "Radio reception state, vector"
+vector 10 AodvNetwork.host[2].wlan[0].radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "Radio transmission state, vector"
+vector 11 AodvNetwork.host[3].wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr source receptionStateChanged
+attr title "Radio reception state, vector"
+vector 12 AodvNetwork.host[3].wlan[0].radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "Radio transmission state, vector"
+vector 13 AodvNetwork.host[4].wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr source receptionStateChanged
+attr title "Radio reception state, vector"
+vector 14 AodvNetwork.host[4].wlan[0].radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "Radio transmission state, vector"
+0	4732 27 0 0 0 0 3 0 4 4 16
+1	4759 27 0 0 0 0 3 0 4 4 16
+2	4786 27 0 0 0 0 3 0 4 4 16
+3	4813 27 0 0 0 0 3 0 4 4 16
+4	4840 27 0 0 0 0 3 0 4 4 16
+5	4867 9 0 0 0 0 1 1 1 1 1
+6	4876 9 0 0 0 0 1 1 1 1 1
+7	4885 9 0 0 0 0 1 1 1 1 1
+8	4894 9 0 0 0 0 1 1 1 1 1
+9	4903 9 0 0 0 0 1 1 1 1 1
+10	4912 10 0 0 0 0 1 1 1 1 1
+11	4922 10 0 0 0 0 1 1 1 1 1
+12	4932 10 0 0 0 0 1 1 1 1 1
+13	4942 10 0 0 0 0 1 1 1 1 1
+14	4952 10 0 0 0 0 1 1 1 1 1
+vector 15 AodvNetwork.host[0].app[0] pingTxSeq:vector ETV
+attr interpolationmode none
+attr title "ping tx seq, vector"
+vector 16 AodvNetwork.host[0].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 17 AodvNetwork.host[0].wlan[0].mac rcvdPkFromHl:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, vector(packetBytes)"
+vector 18 AodvNetwork.host[0].wlan[0].mac.queue packetPushed:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packet pushed, vector(packetBytes)"
+vector 19 AodvNetwork.host[0].wlan[0].mac.queue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr source "count(packetPushed) - count(packetPopped) - count(packetRemoved) - count(packetDropped)"
+attr title "queue length, vector"
+vector 20 AodvNetwork.host[0].wlan[0].mac.queue packetPopped:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packet popped, vector(packetBytes)"
+vector 21 AodvNetwork.host[0].wlan[0].mac.queue queueingTime:vector ETV
+attr interpolationmode none
+attr source queueingTime(packetPopped)
+attr title "queueing times, vector"
+attr unit s
+vector 22 AodvNetwork.host[0].wlan[0].mac sentDownPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets sent to lower layer, vector(packetBytes)"
+6	6438 290 126 485 3.198218232299 10.558326425104 12 1 2 18 30
+15	6728 201 119 462 3.195254009217 10.195254009217 8 0 7 28 140
+16	6929 157 123 477 3.198218232299 10.557978425104 6 32 32 192 6144
+17	7086 157 125 479 3.198218232299 10.557978425104 6 52 52 312 16224
+18	7243 157 125 479 3.198218232299 10.557978425104 6 52 52 312 16224
+19	7400 302 125 479 3.198218232299 10.557978425104 12 0 1 6 6
+20	7702 157 125 479 3.198218232299 10.557978425104 6 52 52 312 16224
+21	7859 151 125 479 3.198218232299 10.557978425104 6 0 0 0 0
+22	8010 157 125 479 3.198218232299 10.557978425104 6 75 75 450 33750
+
