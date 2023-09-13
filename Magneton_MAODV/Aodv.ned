@@ -6,10 +6,12 @@ import inet.networklayer.ipv4.RoutingTableRecorder;
 import inet.node.aodv.AodvRouter;
 import inet.physicallayer.unitdisk.UnitDiskRadioMedium;
 
+
 network AODVNetwork
 {
     parameters:
         int numHosts;
+        
         @display("bgb=650,650;bgi=background/streetmap;bgu=m");
     submodules:
 
@@ -19,7 +21,7 @@ network AODVNetwork
         }
         configurator: Ipv4NetworkConfigurator {
             parameters:
-                config = xml("<config><interface hosts='*' address='145.236.x.x' netmask='255.255.0.0'/></config>");
+                config = xml("<config><interface hosts='*' address='192.168.0.x' netmask='255.255.0.0'/></config>");
                 @display("p=100,100;is=s");
         }
         routingTableRecorder: RoutingTableRecorder {
@@ -33,7 +35,11 @@ network AODVNetwork
         }
         host[numHosts]: AodvRouter {
             parameters:
+                
                 @display("i=device/satellite");
+                aodv.activeRouteTimeout=6s;
+                interfaceTable.displayAddresses = true;
+                aodv.ttlStart = 8;
         }
     connections allowunconnected:
 }
