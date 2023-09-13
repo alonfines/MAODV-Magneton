@@ -1,12 +1,26 @@
 // AODV Protocol- Alon and Avidan
-
+//CheckCheck
 import inet.common.scenario.ScenarioManager;
 import inet.networklayer.configurator.ipv4.Ipv4NetworkConfigurator;
 import inet.networklayer.ipv4.RoutingTableRecorder;
 import inet.node.aodv.AodvRouter;
+import inet.node.inet.StandardHost;
 import inet.physicallayer.unitdisk.UnitDiskRadioMedium;
-import inet.node.ethernet.Eth100M;
+//import inet.node.ethernet.Eth100M;
 import ned.DatarateChannel;
+import inet.routing.aodv.Aodv;
+
+
+//module EthernetAodvRouter extends StandardHost {
+//    //forwarding = default(true);
+//    submodules:
+//        aodv: Aodv {
+//            @display("p=825,226");
+//        }
+//    connections:
+//        aodv.socketOut --> at.in++;
+//        aodv.socketIn <-- at.out++;
+//}
 
 
 network AODVNetwork
@@ -15,12 +29,12 @@ network AODVNetwork
         int numHosts;
         @display("bgb=650,650;bgi=background/streetmap;bgu=m");
 	
-	types:
-	    channel ethline extends DatarateChannel
-        {
-            delay = 50ns;
-            datarate = 100Mbps;
-        }
+//	types:
+//	    channel ethline extends DatarateChannel
+//        {
+//            delay = 50ns;
+//            datarate = 100Mbps;
+//        }
 	    
     submodules:
 
@@ -32,7 +46,7 @@ network AODVNetwork
         
         configurator: Ipv4NetworkConfigurator {
             parameters:
-                config = xml("<config><interface hosts='*' address='192.168.0.x' netmask='255.255.0.0'/></config>");
+                config = xml("<config><interface hosts='*' address='192.168.x.x' netmask='255.255.0.0'/></config>");
                 @display("p=100,100;is=s");
                 
         }
@@ -46,16 +60,20 @@ network AODVNetwork
                 script = default(xml("<scenario/>"));
                 @display("p=218.43599,113.796;is=s");
         }
+        
         host[numHosts]: AodvRouter {
+            
             parameters:
 
                 @display("i=device/satellite");
                 aodv.activeRouteTimeout = 6s;
                 interfaceTable.displayAddresses = true;
                 aodv.ttlStart = 8;
+                        
         }
-    connections allowunconnected:
-//        for i=0..numHosts-2 {
-//            host[i].ethg++ <--> ethline <--> host[i+1].ethg++;
-//        }
+//    connections allowunconnected:
+//        //for i=0..numHosts-2 {
+//            host[0].pppg++ <--> ethline <--> host[1].pppg++;
+//            //host[0].pppg++ <--> ethline <--> host[1].pppg++;
+//        //}
 }
