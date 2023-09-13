@@ -1,21 +1,19 @@
 version 2
-run Static-0-20230913-14:11:54-19084
-attr configname Static
-attr datetime 20230913-14:11:54
-attr experiment Static
+run General-0-20230913-14:09:33-12544
+attr configname General
+attr datetime 20230913-14:09:33
+attr experiment General
 attr inifile omnetpp.ini
 attr iterationvars ""
 attr iterationvarsf ""
 attr measurement ""
 attr network AODVNetwork
-attr processid 19084
+attr processid 12544
 attr repetition 0
 attr replication #0
 attr resultdir results
 attr runnumber 0
 attr seedset 0
-param *.host[0].app[0].destPort 100
-param *.host[0].app[0].destAddresses "\"192.168.0.5\""
 param **.wlan[*].typename "\"AckingWirelessInterface\""
 param **.wlan[*].bitrate 2Mbps
 param **.wlan[*].mac.headerLength 23B
@@ -62,14 +60,14 @@ param *.host[*].app[0].sleepDuration 0.1s
 param *.host[*].app[0].burstDuration 0.5s
 param **.hasStatus true
 
-scalar AODVNetwork.radioMedium.propagation "Arrival computation count" 264
-scalar AODVNetwork.radioMedium "transmission count" 44
-scalar AODVNetwork.radioMedium "signal send count" 264
-scalar AODVNetwork.radioMedium "reception computation count" 264
-scalar AODVNetwork.radioMedium "interference computation count" 887
-scalar AODVNetwork.radioMedium "reception decision computation count" 79
-scalar AODVNetwork.radioMedium "listening decision computation count" 544
-scalar AODVNetwork.radioMedium "reception cache hit" 79.862700228833
+scalar AODVNetwork.radioMedium.propagation "Arrival computation count" 192
+scalar AODVNetwork.radioMedium "transmission count" 32
+scalar AODVNetwork.radioMedium "signal send count" 192
+scalar AODVNetwork.radioMedium "reception computation count" 192
+scalar AODVNetwork.radioMedium "interference computation count" 647
+scalar AODVNetwork.radioMedium "reception decision computation count" 58
+scalar AODVNetwork.radioMedium "listening decision computation count" 397
+scalar AODVNetwork.radioMedium "reception cache hit" 79.874213836478
 attr unit %
 scalar AODVNetwork.radioMedium "interference cache hit" 66.666666666667
 attr unit %
@@ -97,14 +95,14 @@ scalar AODVNetwork.host[0].lo[0].lo passedUpPk:sum(packetBytes) 0
 attr interpolationmode none
 attr source packetSentToUpper
 attr title "packets passed to higher layer, sum(packetBytes)"
-scalar AODVNetwork.host[0].wlan[0].mac.queue packetPopped:count 9
+scalar AODVNetwork.host[0].wlan[0].mac.queue packetPopped:count 6
 attr interpolationmode none
 attr title "packet popped, count"
-scalar AODVNetwork.host[0].wlan[0].mac.queue packetPopped:sum(packetBytes) 3076
+scalar AODVNetwork.host[0].wlan[0].mac.queue packetPopped:sum(packetBytes) 1792
 attr interpolationmode none
 attr title "packet popped, sum(packetBytes)"
 statistic AODVNetwork.host[0].wlan[0].mac.queue queueingTime:histogram
-field count 9
+field count 6
 field mean 0
 field stddev 0
 field min 0
@@ -141,7 +139,7 @@ bin	-0.08	0
 bin	-0.06	0
 bin	-0.04	0
 bin	-0.02	0
-bin	0	9
+bin	0	6
 bin	0.02	0
 bin	0.04	0
 bin	0.06	0
@@ -175,10 +173,10 @@ scalar AODVNetwork.host[0].wlan[0].mac.queue queueLength:timeavg 0
 attr interpolationmode sample-hold
 attr source "count(packetPushed) - count(packetPopped) - count(packetRemoved) - count(packetDropped)"
 attr title "queue length, timeavg"
-scalar AODVNetwork.host[0].wlan[0].mac.queue packetPushed:count 9
+scalar AODVNetwork.host[0].wlan[0].mac.queue packetPushed:count 6
 attr interpolationmode none
 attr title "packet pushed, count"
-scalar AODVNetwork.host[0].wlan[0].mac.queue packetPushed:sum(packetBytes) 3076
+scalar AODVNetwork.host[0].wlan[0].mac.queue packetPushed:sum(packetBytes) 1792
 attr interpolationmode none
 attr title "packet pushed, sum(packetBytes)"
 scalar AODVNetwork.host[0].wlan[0].mac.queue packetDropQueueOverflow:count 0
@@ -195,27 +193,27 @@ attr title "packets removed, count"
 scalar AODVNetwork.host[0].wlan[0].mac.queue packetRemoved:sum(packetBytes) 0
 attr interpolationmode none
 attr title "packets removed, sum(packetBytes)"
-scalar AODVNetwork.host[0].wlan[0].mac rcvdPkFromLl:count 11
+scalar AODVNetwork.host[0].wlan[0].mac rcvdPkFromLl:count 8
 attr interpolationmode none
 attr source packetReceivedFromLower
 attr title "packets received from lower layer, count"
-scalar AODVNetwork.host[0].wlan[0].mac rcvdPkFromLl:sum(packetBytes) 3405
+scalar AODVNetwork.host[0].wlan[0].mac rcvdPkFromLl:sum(packetBytes) 2052
 attr interpolationmode none
 attr source packetReceivedFromLower
 attr title "packets received from lower layer, sum(packetBytes)"
-scalar AODVNetwork.host[0].wlan[0].mac sentDownPk:count 9
+scalar AODVNetwork.host[0].wlan[0].mac sentDownPk:count 6
 attr interpolationmode none
 attr source packetSentToLower
 attr title "packets sent to lower layer, count"
-scalar AODVNetwork.host[0].wlan[0].mac sentDownPk:sum(packetBytes) 3283
+scalar AODVNetwork.host[0].wlan[0].mac sentDownPk:sum(packetBytes) 1930
 attr interpolationmode none
 attr source packetSentToLower
 attr title "packets sent to lower layer, sum(packetBytes)"
-scalar AODVNetwork.host[0].wlan[0].mac rcvdPkFromHl:count 9
+scalar AODVNetwork.host[0].wlan[0].mac rcvdPkFromHl:count 6
 attr interpolationmode none
 attr source packetReceivedFromUpper
 attr title "packets received from higher layer, count"
-scalar AODVNetwork.host[0].wlan[0].mac rcvdPkFromHl:sum(packetBytes) 3076
+scalar AODVNetwork.host[0].wlan[0].mac rcvdPkFromHl:sum(packetBytes) 1792
 attr interpolationmode none
 attr source packetReceivedFromUpper
 attr title "packets received from higher layer, sum(packetBytes)"
@@ -243,11 +241,11 @@ scalar AODVNetwork.host[0].wlan[0].mac packetDropInterfaceDown:sum(packetBytes) 
 attr interpolationmode none
 attr source packetDropReasonIsInterfaceDown(packetDropped)
 attr title "packet drop: interface down, sum(packetBytes)"
-scalar AODVNetwork.host[0].wlan[0].mac packetDropNotAddressedToUs:count 8
+scalar AODVNetwork.host[0].wlan[0].mac packetDropNotAddressedToUs:count 5
 attr interpolationmode none
 attr source packetDropReasonIsNotAddressedToUs(packetDropped)
 attr title "packet drop: not addressed to us, count"
-scalar AODVNetwork.host[0].wlan[0].mac packetDropNotAddressedToUs:sum(packetBytes) 3208
+scalar AODVNetwork.host[0].wlan[0].mac packetDropNotAddressedToUs:sum(packetBytes) 1855
 attr interpolationmode none
 attr source packetDropReasonIsNotAddressedToUs(packetDropped)
 attr title "packet drop: not addressed to us, sum(packetBytes)"
@@ -269,7 +267,7 @@ bin	-inf	0
 bin	0	0
 bin	1	0
 statistic AODVNetwork.host[0].wlan[0].radio packetErrorRate:histogram
-field count 11
+field count 8
 field mean 0
 field stddev 0
 field min 0
@@ -304,7 +302,7 @@ bin	-0.08	0
 bin	-0.06	0
 bin	-0.04	0
 bin	-0.02	0
-bin	0	11
+bin	0	8
 bin	0.02	0
 bin	0.04	0
 bin	0.06	0
@@ -331,7 +329,7 @@ bin	0.46	0
 bin	0.48	0
 bin	0.5	0
 statistic AODVNetwork.host[0].wlan[0].radio bitErrorRate:histogram
-field count 11
+field count 8
 field mean 0
 field stddev 0
 field min 0
@@ -366,7 +364,7 @@ bin	-0.08	0
 bin	-0.06	0
 bin	-0.04	0
 bin	-0.02	0
-bin	0	11
+bin	0	8
 bin	0.02	0
 bin	0.04	0
 bin	0.06	0
@@ -393,7 +391,7 @@ bin	0.46	0
 bin	0.48	0
 bin	0.5	0
 statistic AODVNetwork.host[0].wlan[0].radio symbolErrorRate:histogram
-field count 11
+field count 8
 field mean 0
 field stddev 0
 field min 0
@@ -428,7 +426,7 @@ bin	-0.08	0
 bin	-0.06	0
 bin	-0.04	0
 bin	-0.02	0
-bin	0	11
+bin	0	8
 bin	0.02	0
 bin	0.04	0
 bin	0.06	0
@@ -454,11 +452,11 @@ bin	0.44	0
 bin	0.46	0
 bin	0.48	0
 bin	0.5	0
-scalar AODVNetwork.host[0].wlan[0].radio transmissionState:count 19
+scalar AODVNetwork.host[0].wlan[0].radio transmissionState:count 13
 attr interpolationmode sample-hold
 attr source transmissionStateChanged
 attr title "Radio transmission state, count"
-scalar AODVNetwork.host[0].wlan[0].radio receptionState:count 24
+scalar AODVNetwork.host[0].wlan[0].radio receptionState:count 18
 attr interpolationmode sample-hold
 attr source receptionStateChanged
 attr title "Radio reception state, count"
@@ -540,11 +538,11 @@ scalar AODVNetwork.host[0].udp packetReceived:sum(packetBytes) 60
 attr interpolationmode none
 attr source packetReceived
 attr title "packets received, sum(packetBytes)"
-scalar AODVNetwork.host[0].udp packetSent:count 9
+scalar AODVNetwork.host[0].udp packetSent:count 6
 attr interpolationmode none
 attr source packetSent
 attr title "packets sent, count"
-scalar AODVNetwork.host[0].udp packetSent:sum(packetBytes) 3296
+scalar AODVNetwork.host[0].udp packetSent:sum(packetBytes) 2072
 attr interpolationmode none
 attr source packetSent
 attr title "packets sent, sum(packetBytes)"
@@ -560,7 +558,7 @@ scalar AODVNetwork.host[0].udp droppedPkBadChecksum:count 0
 attr interpolationmode none
 attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
 attr title "packets dropped (checksum error), count"
-scalar AODVNetwork.host[0].app[0] "Total sent" 8
+scalar AODVNetwork.host[0].app[0] "Total sent" 5
 scalar AODVNetwork.host[0].app[0] "Total received" 0
 scalar AODVNetwork.host[0].app[0] "Total deleted" 0
 scalar AODVNetwork.host[0].app[0] outOfOrderPk:count 0
@@ -594,11 +592,11 @@ attr unit s
 bin	-inf	0
 bin	0	0
 bin	1	0
-scalar AODVNetwork.host[0].app[0] packetSent:count 8
+scalar AODVNetwork.host[0].app[0] packetSent:count 5
 attr interpolationmode none
 attr source packetSent
 attr title "packets sent, count"
-scalar AODVNetwork.host[0].app[0] packetSent:sum(packetBytes) 3200
+scalar AODVNetwork.host[0].app[0] packetSent:sum(packetBytes) 2000
 attr interpolationmode none
 attr source packetSent
 attr title "packets sent, sum(packetBytes)"
@@ -626,14 +624,14 @@ scalar AODVNetwork.host[1].lo[0].lo passedUpPk:sum(packetBytes) 0
 attr interpolationmode none
 attr source packetSentToUpper
 attr title "packets passed to higher layer, sum(packetBytes)"
-scalar AODVNetwork.host[1].wlan[0].mac.queue packetPopped:count 11
+scalar AODVNetwork.host[1].wlan[0].mac.queue packetPopped:count 8
 attr interpolationmode none
 attr title "packet popped, count"
-scalar AODVNetwork.host[1].wlan[0].mac.queue packetPopped:sum(packetBytes) 3152
+scalar AODVNetwork.host[1].wlan[0].mac.queue packetPopped:sum(packetBytes) 1868
 attr interpolationmode none
 attr title "packet popped, sum(packetBytes)"
 statistic AODVNetwork.host[1].wlan[0].mac.queue queueingTime:histogram
-field count 11
+field count 8
 field mean 0
 field stddev 0
 field min 0
@@ -670,7 +668,7 @@ bin	-0.08	0
 bin	-0.06	0
 bin	-0.04	0
 bin	-0.02	0
-bin	0	11
+bin	0	8
 bin	0.02	0
 bin	0.04	0
 bin	0.06	0
@@ -704,10 +702,10 @@ scalar AODVNetwork.host[1].wlan[0].mac.queue queueLength:timeavg 0
 attr interpolationmode sample-hold
 attr source "count(packetPushed) - count(packetPopped) - count(packetRemoved) - count(packetDropped)"
 attr title "queue length, timeavg"
-scalar AODVNetwork.host[1].wlan[0].mac.queue packetPushed:count 11
+scalar AODVNetwork.host[1].wlan[0].mac.queue packetPushed:count 8
 attr interpolationmode none
 attr title "packet pushed, count"
-scalar AODVNetwork.host[1].wlan[0].mac.queue packetPushed:sum(packetBytes) 3152
+scalar AODVNetwork.host[1].wlan[0].mac.queue packetPushed:sum(packetBytes) 1868
 attr interpolationmode none
 attr title "packet pushed, sum(packetBytes)"
 scalar AODVNetwork.host[1].wlan[0].mac.queue packetDropQueueOverflow:count 0
@@ -724,35 +722,35 @@ attr title "packets removed, count"
 scalar AODVNetwork.host[1].wlan[0].mac.queue packetRemoved:sum(packetBytes) 0
 attr interpolationmode none
 attr title "packets removed, sum(packetBytes)"
-scalar AODVNetwork.host[1].wlan[0].mac rcvdPkFromLl:count 20
+scalar AODVNetwork.host[1].wlan[0].mac rcvdPkFromLl:count 14
 attr interpolationmode none
 attr source packetReceivedFromLower
 attr title "packets received from lower layer, count"
-scalar AODVNetwork.host[1].wlan[0].mac rcvdPkFromLl:sum(packetBytes) 6688
+scalar AODVNetwork.host[1].wlan[0].mac rcvdPkFromLl:sum(packetBytes) 3982
 attr interpolationmode none
 attr source packetReceivedFromLower
 attr title "packets received from lower layer, sum(packetBytes)"
-scalar AODVNetwork.host[1].wlan[0].mac sentDownPk:count 11
+scalar AODVNetwork.host[1].wlan[0].mac sentDownPk:count 8
 attr interpolationmode none
 attr source packetSentToLower
 attr title "packets sent to lower layer, count"
-scalar AODVNetwork.host[1].wlan[0].mac sentDownPk:sum(packetBytes) 3405
+scalar AODVNetwork.host[1].wlan[0].mac sentDownPk:sum(packetBytes) 2052
 attr interpolationmode none
 attr source packetSentToLower
 attr title "packets sent to lower layer, sum(packetBytes)"
-scalar AODVNetwork.host[1].wlan[0].mac rcvdPkFromHl:count 11
+scalar AODVNetwork.host[1].wlan[0].mac rcvdPkFromHl:count 8
 attr interpolationmode none
 attr source packetReceivedFromUpper
 attr title "packets received from higher layer, count"
-scalar AODVNetwork.host[1].wlan[0].mac rcvdPkFromHl:sum(packetBytes) 3152
+scalar AODVNetwork.host[1].wlan[0].mac rcvdPkFromHl:sum(packetBytes) 1868
 attr interpolationmode none
 attr source packetReceivedFromUpper
 attr title "packets received from higher layer, sum(packetBytes)"
-scalar AODVNetwork.host[1].wlan[0].mac passedUpPk:count 12
+scalar AODVNetwork.host[1].wlan[0].mac passedUpPk:count 9
 attr interpolationmode none
 attr source packetSentToUpper
 attr title "packets passed to higher layer, count"
-scalar AODVNetwork.host[1].wlan[0].mac passedUpPk:sum(packetBytes) 3204
+scalar AODVNetwork.host[1].wlan[0].mac passedUpPk:sum(packetBytes) 1920
 attr interpolationmode none
 attr source packetSentToUpper
 attr title "packets passed to higher layer, sum(packetBytes)"
@@ -772,11 +770,11 @@ scalar AODVNetwork.host[1].wlan[0].mac packetDropInterfaceDown:sum(packetBytes) 
 attr interpolationmode none
 attr source packetDropReasonIsInterfaceDown(packetDropped)
 attr title "packet drop: interface down, sum(packetBytes)"
-scalar AODVNetwork.host[1].wlan[0].mac packetDropNotAddressedToUs:count 8
+scalar AODVNetwork.host[1].wlan[0].mac packetDropNotAddressedToUs:count 5
 attr interpolationmode none
 attr source packetDropReasonIsNotAddressedToUs(packetDropped)
 attr title "packet drop: not addressed to us, count"
-scalar AODVNetwork.host[1].wlan[0].mac packetDropNotAddressedToUs:sum(packetBytes) 3208
+scalar AODVNetwork.host[1].wlan[0].mac packetDropNotAddressedToUs:sum(packetBytes) 1855
 attr interpolationmode none
 attr source packetDropReasonIsNotAddressedToUs(packetDropped)
 attr title "packet drop: not addressed to us, sum(packetBytes)"
@@ -798,7 +796,7 @@ bin	-inf	0
 bin	0	0
 bin	1	0
 statistic AODVNetwork.host[1].wlan[0].radio packetErrorRate:histogram
-field count 20
+field count 14
 field mean 0
 field stddev 0
 field min 0
@@ -833,7 +831,7 @@ bin	-0.08	0
 bin	-0.06	0
 bin	-0.04	0
 bin	-0.02	0
-bin	0	20
+bin	0	14
 bin	0.02	0
 bin	0.04	0
 bin	0.06	0
@@ -860,7 +858,7 @@ bin	0.46	0
 bin	0.48	0
 bin	0.5	0
 statistic AODVNetwork.host[1].wlan[0].radio bitErrorRate:histogram
-field count 20
+field count 14
 field mean 0
 field stddev 0
 field min 0
@@ -895,7 +893,7 @@ bin	-0.08	0
 bin	-0.06	0
 bin	-0.04	0
 bin	-0.02	0
-bin	0	20
+bin	0	14
 bin	0.02	0
 bin	0.04	0
 bin	0.06	0
@@ -922,7 +920,7 @@ bin	0.46	0
 bin	0.48	0
 bin	0.5	0
 statistic AODVNetwork.host[1].wlan[0].radio symbolErrorRate:histogram
-field count 20
+field count 14
 field mean 0
 field stddev 0
 field min 0
@@ -957,7 +955,7 @@ bin	-0.08	0
 bin	-0.06	0
 bin	-0.04	0
 bin	-0.02	0
-bin	0	20
+bin	0	14
 bin	0.02	0
 bin	0.04	0
 bin	0.06	0
@@ -983,11 +981,11 @@ bin	0.44	0
 bin	0.46	0
 bin	0.48	0
 bin	0.5	0
-scalar AODVNetwork.host[1].wlan[0].radio transmissionState:count 23
+scalar AODVNetwork.host[1].wlan[0].radio transmissionState:count 17
 attr interpolationmode sample-hold
 attr source transmissionStateChanged
 attr title "Radio transmission state, count"
-scalar AODVNetwork.host[1].wlan[0].radio receptionState:count 41
+scalar AODVNetwork.host[1].wlan[0].radio receptionState:count 29
 attr interpolationmode sample-hold
 attr source receptionStateChanged
 attr title "Radio reception state, count"
@@ -1155,14 +1153,14 @@ scalar AODVNetwork.host[2].lo[0].lo passedUpPk:sum(packetBytes) 0
 attr interpolationmode none
 attr source packetSentToUpper
 attr title "packets passed to higher layer, sum(packetBytes)"
-scalar AODVNetwork.host[2].wlan[0].mac.queue packetPopped:count 11
+scalar AODVNetwork.host[2].wlan[0].mac.queue packetPopped:count 8
 attr interpolationmode none
 attr title "packet popped, count"
-scalar AODVNetwork.host[2].wlan[0].mac.queue packetPopped:sum(packetBytes) 3152
+scalar AODVNetwork.host[2].wlan[0].mac.queue packetPopped:sum(packetBytes) 1868
 attr interpolationmode none
 attr title "packet popped, sum(packetBytes)"
 statistic AODVNetwork.host[2].wlan[0].mac.queue queueingTime:histogram
-field count 11
+field count 8
 field mean 0
 field stddev 0
 field min 0
@@ -1199,7 +1197,7 @@ bin	-0.08	0
 bin	-0.06	0
 bin	-0.04	0
 bin	-0.02	0
-bin	0	11
+bin	0	8
 bin	0.02	0
 bin	0.04	0
 bin	0.06	0
@@ -1233,10 +1231,10 @@ scalar AODVNetwork.host[2].wlan[0].mac.queue queueLength:timeavg 0
 attr interpolationmode sample-hold
 attr source "count(packetPushed) - count(packetPopped) - count(packetRemoved) - count(packetDropped)"
 attr title "queue length, timeavg"
-scalar AODVNetwork.host[2].wlan[0].mac.queue packetPushed:count 11
+scalar AODVNetwork.host[2].wlan[0].mac.queue packetPushed:count 8
 attr interpolationmode none
 attr title "packet pushed, count"
-scalar AODVNetwork.host[2].wlan[0].mac.queue packetPushed:sum(packetBytes) 3152
+scalar AODVNetwork.host[2].wlan[0].mac.queue packetPushed:sum(packetBytes) 1868
 attr interpolationmode none
 attr title "packet pushed, sum(packetBytes)"
 scalar AODVNetwork.host[2].wlan[0].mac.queue packetDropQueueOverflow:count 0
@@ -1253,35 +1251,35 @@ attr title "packets removed, count"
 scalar AODVNetwork.host[2].wlan[0].mac.queue packetRemoved:sum(packetBytes) 0
 attr interpolationmode none
 attr title "packets removed, sum(packetBytes)"
-scalar AODVNetwork.host[2].wlan[0].mac rcvdPkFromLl:count 22
+scalar AODVNetwork.host[2].wlan[0].mac rcvdPkFromLl:count 16
 attr interpolationmode none
 attr source packetReceivedFromLower
 attr title "packets received from lower layer, count"
-scalar AODVNetwork.host[2].wlan[0].mac rcvdPkFromLl:sum(packetBytes) 6810
+scalar AODVNetwork.host[2].wlan[0].mac rcvdPkFromLl:sum(packetBytes) 4104
 attr interpolationmode none
 attr source packetReceivedFromLower
 attr title "packets received from lower layer, sum(packetBytes)"
-scalar AODVNetwork.host[2].wlan[0].mac sentDownPk:count 11
+scalar AODVNetwork.host[2].wlan[0].mac sentDownPk:count 8
 attr interpolationmode none
 attr source packetSentToLower
 attr title "packets sent to lower layer, count"
-scalar AODVNetwork.host[2].wlan[0].mac sentDownPk:sum(packetBytes) 3405
+scalar AODVNetwork.host[2].wlan[0].mac sentDownPk:sum(packetBytes) 2052
 attr interpolationmode none
 attr source packetSentToLower
 attr title "packets sent to lower layer, sum(packetBytes)"
-scalar AODVNetwork.host[2].wlan[0].mac rcvdPkFromHl:count 11
+scalar AODVNetwork.host[2].wlan[0].mac rcvdPkFromHl:count 8
 attr interpolationmode none
 attr source packetReceivedFromUpper
 attr title "packets received from higher layer, count"
-scalar AODVNetwork.host[2].wlan[0].mac rcvdPkFromHl:sum(packetBytes) 3152
+scalar AODVNetwork.host[2].wlan[0].mac rcvdPkFromHl:sum(packetBytes) 1868
 attr interpolationmode none
 attr source packetReceivedFromUpper
 attr title "packets received from higher layer, sum(packetBytes)"
-scalar AODVNetwork.host[2].wlan[0].mac passedUpPk:count 13
+scalar AODVNetwork.host[2].wlan[0].mac passedUpPk:count 10
 attr interpolationmode none
 attr source packetSentToUpper
 attr title "packets passed to higher layer, count"
-scalar AODVNetwork.host[2].wlan[0].mac passedUpPk:sum(packetBytes) 3232
+scalar AODVNetwork.host[2].wlan[0].mac passedUpPk:sum(packetBytes) 1948
 attr interpolationmode none
 attr source packetSentToUpper
 attr title "packets passed to higher layer, sum(packetBytes)"
@@ -1301,11 +1299,11 @@ scalar AODVNetwork.host[2].wlan[0].mac packetDropInterfaceDown:sum(packetBytes) 
 attr interpolationmode none
 attr source packetDropReasonIsInterfaceDown(packetDropped)
 attr title "packet drop: interface down, sum(packetBytes)"
-scalar AODVNetwork.host[2].wlan[0].mac packetDropNotAddressedToUs:count 9
+scalar AODVNetwork.host[2].wlan[0].mac packetDropNotAddressedToUs:count 6
 attr interpolationmode none
 attr source packetDropReasonIsNotAddressedToUs(packetDropped)
 attr title "packet drop: not addressed to us, count"
-scalar AODVNetwork.host[2].wlan[0].mac packetDropNotAddressedToUs:sum(packetBytes) 3279
+scalar AODVNetwork.host[2].wlan[0].mac packetDropNotAddressedToUs:sum(packetBytes) 1926
 attr interpolationmode none
 attr source packetDropReasonIsNotAddressedToUs(packetDropped)
 attr title "packet drop: not addressed to us, sum(packetBytes)"
@@ -1327,7 +1325,7 @@ bin	-inf	0
 bin	0	0
 bin	1	0
 statistic AODVNetwork.host[2].wlan[0].radio packetErrorRate:histogram
-field count 22
+field count 16
 field mean 0
 field stddev 0
 field min 0
@@ -1362,7 +1360,7 @@ bin	-0.08	0
 bin	-0.06	0
 bin	-0.04	0
 bin	-0.02	0
-bin	0	22
+bin	0	16
 bin	0.02	0
 bin	0.04	0
 bin	0.06	0
@@ -1389,7 +1387,7 @@ bin	0.46	0
 bin	0.48	0
 bin	0.5	0
 statistic AODVNetwork.host[2].wlan[0].radio bitErrorRate:histogram
-field count 22
+field count 16
 field mean 0
 field stddev 0
 field min 0
@@ -1424,7 +1422,7 @@ bin	-0.08	0
 bin	-0.06	0
 bin	-0.04	0
 bin	-0.02	0
-bin	0	22
+bin	0	16
 bin	0.02	0
 bin	0.04	0
 bin	0.06	0
@@ -1451,7 +1449,7 @@ bin	0.46	0
 bin	0.48	0
 bin	0.5	0
 statistic AODVNetwork.host[2].wlan[0].radio symbolErrorRate:histogram
-field count 22
+field count 16
 field mean 0
 field stddev 0
 field min 0
@@ -1486,7 +1484,7 @@ bin	-0.08	0
 bin	-0.06	0
 bin	-0.04	0
 bin	-0.02	0
-bin	0	22
+bin	0	16
 bin	0.02	0
 bin	0.04	0
 bin	0.06	0
@@ -1512,11 +1510,11 @@ bin	0.44	0
 bin	0.46	0
 bin	0.48	0
 bin	0.5	0
-scalar AODVNetwork.host[2].wlan[0].radio transmissionState:count 23
+scalar AODVNetwork.host[2].wlan[0].radio transmissionState:count 17
 attr interpolationmode sample-hold
 attr source transmissionStateChanged
 attr title "Radio transmission state, count"
-scalar AODVNetwork.host[2].wlan[0].radio receptionState:count 54
+scalar AODVNetwork.host[2].wlan[0].radio receptionState:count 39
 attr interpolationmode sample-hold
 attr source receptionStateChanged
 attr title "Radio reception state, count"
@@ -1684,14 +1682,14 @@ scalar AODVNetwork.host[3].lo[0].lo passedUpPk:sum(packetBytes) 0
 attr interpolationmode none
 attr source packetSentToUpper
 attr title "packets passed to higher layer, sum(packetBytes)"
-scalar AODVNetwork.host[3].wlan[0].mac.queue packetPopped:count 11
+scalar AODVNetwork.host[3].wlan[0].mac.queue packetPopped:count 8
 attr interpolationmode none
 attr title "packet popped, count"
-scalar AODVNetwork.host[3].wlan[0].mac.queue packetPopped:sum(packetBytes) 3152
+scalar AODVNetwork.host[3].wlan[0].mac.queue packetPopped:sum(packetBytes) 1868
 attr interpolationmode none
 attr title "packet popped, sum(packetBytes)"
 statistic AODVNetwork.host[3].wlan[0].mac.queue queueingTime:histogram
-field count 11
+field count 8
 field mean 0
 field stddev 0
 field min 0
@@ -1728,7 +1726,7 @@ bin	-0.08	0
 bin	-0.06	0
 bin	-0.04	0
 bin	-0.02	0
-bin	0	11
+bin	0	8
 bin	0.02	0
 bin	0.04	0
 bin	0.06	0
@@ -1762,10 +1760,10 @@ scalar AODVNetwork.host[3].wlan[0].mac.queue queueLength:timeavg 0
 attr interpolationmode sample-hold
 attr source "count(packetPushed) - count(packetPopped) - count(packetRemoved) - count(packetDropped)"
 attr title "queue length, timeavg"
-scalar AODVNetwork.host[3].wlan[0].mac.queue packetPushed:count 11
+scalar AODVNetwork.host[3].wlan[0].mac.queue packetPushed:count 8
 attr interpolationmode none
 attr title "packet pushed, count"
-scalar AODVNetwork.host[3].wlan[0].mac.queue packetPushed:sum(packetBytes) 3152
+scalar AODVNetwork.host[3].wlan[0].mac.queue packetPushed:sum(packetBytes) 1868
 attr interpolationmode none
 attr title "packet pushed, sum(packetBytes)"
 scalar AODVNetwork.host[3].wlan[0].mac.queue packetDropQueueOverflow:count 0
@@ -1782,35 +1780,35 @@ attr title "packets removed, count"
 scalar AODVNetwork.host[3].wlan[0].mac.queue packetRemoved:sum(packetBytes) 0
 attr interpolationmode none
 attr title "packets removed, sum(packetBytes)"
-scalar AODVNetwork.host[3].wlan[0].mac rcvdPkFromLl:count 13
+scalar AODVNetwork.host[3].wlan[0].mac rcvdPkFromLl:count 10
 attr interpolationmode none
 attr source packetReceivedFromLower
 attr title "packets received from lower layer, count"
-scalar AODVNetwork.host[3].wlan[0].mac rcvdPkFromLl:sum(packetBytes) 3527
+scalar AODVNetwork.host[3].wlan[0].mac rcvdPkFromLl:sum(packetBytes) 2174
 attr interpolationmode none
 attr source packetReceivedFromLower
 attr title "packets received from lower layer, sum(packetBytes)"
-scalar AODVNetwork.host[3].wlan[0].mac sentDownPk:count 11
+scalar AODVNetwork.host[3].wlan[0].mac sentDownPk:count 8
 attr interpolationmode none
 attr source packetSentToLower
 attr title "packets sent to lower layer, count"
-scalar AODVNetwork.host[3].wlan[0].mac sentDownPk:sum(packetBytes) 3405
+scalar AODVNetwork.host[3].wlan[0].mac sentDownPk:sum(packetBytes) 2052
 attr interpolationmode none
 attr source packetSentToLower
 attr title "packets sent to lower layer, sum(packetBytes)"
-scalar AODVNetwork.host[3].wlan[0].mac rcvdPkFromHl:count 11
+scalar AODVNetwork.host[3].wlan[0].mac rcvdPkFromHl:count 8
 attr interpolationmode none
 attr source packetReceivedFromUpper
 attr title "packets received from higher layer, count"
-scalar AODVNetwork.host[3].wlan[0].mac rcvdPkFromHl:sum(packetBytes) 3152
+scalar AODVNetwork.host[3].wlan[0].mac rcvdPkFromHl:sum(packetBytes) 1868
 attr interpolationmode none
 attr source packetReceivedFromUpper
 attr title "packets received from higher layer, sum(packetBytes)"
-scalar AODVNetwork.host[3].wlan[0].mac passedUpPk:count 12
+scalar AODVNetwork.host[3].wlan[0].mac passedUpPk:count 9
 attr interpolationmode none
 attr source packetSentToUpper
 attr title "packets passed to higher layer, count"
-scalar AODVNetwork.host[3].wlan[0].mac passedUpPk:sum(packetBytes) 3180
+scalar AODVNetwork.host[3].wlan[0].mac passedUpPk:sum(packetBytes) 1896
 attr interpolationmode none
 attr source packetSentToUpper
 attr title "packets passed to higher layer, sum(packetBytes)"
@@ -1856,7 +1854,7 @@ bin	-inf	0
 bin	0	0
 bin	1	0
 statistic AODVNetwork.host[3].wlan[0].radio packetErrorRate:histogram
-field count 13
+field count 10
 field mean 0
 field stddev 0
 field min 0
@@ -1891,7 +1889,7 @@ bin	-0.08	0
 bin	-0.06	0
 bin	-0.04	0
 bin	-0.02	0
-bin	0	13
+bin	0	10
 bin	0.02	0
 bin	0.04	0
 bin	0.06	0
@@ -1918,7 +1916,7 @@ bin	0.46	0
 bin	0.48	0
 bin	0.5	0
 statistic AODVNetwork.host[3].wlan[0].radio bitErrorRate:histogram
-field count 13
+field count 10
 field mean 0
 field stddev 0
 field min 0
@@ -1953,7 +1951,7 @@ bin	-0.08	0
 bin	-0.06	0
 bin	-0.04	0
 bin	-0.02	0
-bin	0	13
+bin	0	10
 bin	0.02	0
 bin	0.04	0
 bin	0.06	0
@@ -1980,7 +1978,7 @@ bin	0.46	0
 bin	0.48	0
 bin	0.5	0
 statistic AODVNetwork.host[3].wlan[0].radio symbolErrorRate:histogram
-field count 13
+field count 10
 field mean 0
 field stddev 0
 field min 0
@@ -2015,7 +2013,7 @@ bin	-0.08	0
 bin	-0.06	0
 bin	-0.04	0
 bin	-0.02	0
-bin	0	13
+bin	0	10
 bin	0.02	0
 bin	0.04	0
 bin	0.06	0
@@ -2041,11 +2039,11 @@ bin	0.44	0
 bin	0.46	0
 bin	0.48	0
 bin	0.5	0
-scalar AODVNetwork.host[3].wlan[0].radio transmissionState:count 23
+scalar AODVNetwork.host[3].wlan[0].radio transmissionState:count 17
 attr interpolationmode sample-hold
 attr source transmissionStateChanged
 attr title "Radio transmission state, count"
-scalar AODVNetwork.host[3].wlan[0].radio receptionState:count 27
+scalar AODVNetwork.host[3].wlan[0].radio receptionState:count 21
 attr interpolationmode sample-hold
 attr source receptionStateChanged
 attr title "Radio reception state, count"
@@ -2311,11 +2309,11 @@ attr title "packets removed, count"
 scalar AODVNetwork.host[4].wlan[0].mac.queue packetRemoved:sum(packetBytes) 0
 attr interpolationmode none
 attr title "packets removed, sum(packetBytes)"
-scalar AODVNetwork.host[4].wlan[0].mac rcvdPkFromLl:count 11
+scalar AODVNetwork.host[4].wlan[0].mac rcvdPkFromLl:count 8
 attr interpolationmode none
 attr source packetReceivedFromLower
 attr title "packets received from lower layer, count"
-scalar AODVNetwork.host[4].wlan[0].mac rcvdPkFromLl:sum(packetBytes) 3405
+scalar AODVNetwork.host[4].wlan[0].mac rcvdPkFromLl:sum(packetBytes) 2052
 attr interpolationmode none
 attr source packetReceivedFromLower
 attr title "packets received from lower layer, sum(packetBytes)"
@@ -2335,11 +2333,11 @@ scalar AODVNetwork.host[4].wlan[0].mac rcvdPkFromHl:sum(packetBytes) 76
 attr interpolationmode none
 attr source packetReceivedFromUpper
 attr title "packets received from higher layer, sum(packetBytes)"
-scalar AODVNetwork.host[4].wlan[0].mac passedUpPk:count 10
+scalar AODVNetwork.host[4].wlan[0].mac passedUpPk:count 7
 attr interpolationmode none
 attr source packetSentToUpper
 attr title "packets passed to higher layer, count"
-scalar AODVNetwork.host[4].wlan[0].mac passedUpPk:sum(packetBytes) 3104
+scalar AODVNetwork.host[4].wlan[0].mac passedUpPk:sum(packetBytes) 1820
 attr interpolationmode none
 attr source packetSentToUpper
 attr title "packets passed to higher layer, sum(packetBytes)"
@@ -2385,7 +2383,7 @@ bin	-inf	0
 bin	0	0
 bin	1	0
 statistic AODVNetwork.host[4].wlan[0].radio packetErrorRate:histogram
-field count 11
+field count 8
 field mean 0
 field stddev 0
 field min 0
@@ -2420,7 +2418,7 @@ bin	-0.08	0
 bin	-0.06	0
 bin	-0.04	0
 bin	-0.02	0
-bin	0	11
+bin	0	8
 bin	0.02	0
 bin	0.04	0
 bin	0.06	0
@@ -2447,7 +2445,7 @@ bin	0.46	0
 bin	0.48	0
 bin	0.5	0
 statistic AODVNetwork.host[4].wlan[0].radio bitErrorRate:histogram
-field count 11
+field count 8
 field mean 0
 field stddev 0
 field min 0
@@ -2482,7 +2480,7 @@ bin	-0.08	0
 bin	-0.06	0
 bin	-0.04	0
 bin	-0.02	0
-bin	0	11
+bin	0	8
 bin	0.02	0
 bin	0.04	0
 bin	0.06	0
@@ -2509,7 +2507,7 @@ bin	0.46	0
 bin	0.48	0
 bin	0.5	0
 statistic AODVNetwork.host[4].wlan[0].radio symbolErrorRate:histogram
-field count 11
+field count 8
 field mean 0
 field stddev 0
 field min 0
@@ -2544,7 +2542,7 @@ bin	-0.08	0
 bin	-0.06	0
 bin	-0.04	0
 bin	-0.02	0
-bin	0	11
+bin	0	8
 bin	0.02	0
 bin	0.04	0
 bin	0.06	0
@@ -2574,7 +2572,7 @@ scalar AODVNetwork.host[4].wlan[0].radio transmissionState:count 5
 attr interpolationmode sample-hold
 attr source transmissionStateChanged
 attr title "Radio transmission state, count"
-scalar AODVNetwork.host[4].wlan[0].radio receptionState:count 31
+scalar AODVNetwork.host[4].wlan[0].radio receptionState:count 22
 attr interpolationmode sample-hold
 attr source receptionStateChanged
 attr title "Radio reception state, count"
@@ -2648,11 +2646,11 @@ scalar AODVNetwork.host[4].ipv4.arp arpResolutionCompleted:count 2
 attr title "ARP completed resolutions, count"
 scalar AODVNetwork.host[4].ipv4.arp arpResolutionInitiated:count 1
 attr title "ARP initiated resolutions, count"
-scalar AODVNetwork.host[4].udp packetReceived:count 8
+scalar AODVNetwork.host[4].udp packetReceived:count 5
 attr interpolationmode none
 attr source packetReceived
 attr title "packets received, count"
-scalar AODVNetwork.host[4].udp packetReceived:sum(packetBytes) 2888
+scalar AODVNetwork.host[4].udp packetReceived:sum(packetBytes) 1664
 attr interpolationmode none
 attr source packetReceived
 attr title "packets received, sum(packetBytes)"
@@ -2664,7 +2662,7 @@ scalar AODVNetwork.host[4].udp packetSent:sum(packetBytes) 28
 attr interpolationmode none
 attr source packetSent
 attr title "packets sent, sum(packetBytes)"
-scalar AODVNetwork.host[4].udp passedUpPk:count 8
+scalar AODVNetwork.host[4].udp passedUpPk:count 5
 attr interpolationmode none
 attr source packetSentToUpper
 attr title "packets passed up, count"
@@ -2677,7 +2675,7 @@ attr interpolationmode none
 attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
 attr title "packets dropped (checksum error), count"
 scalar AODVNetwork.host[4].app[0] "Total sent" 0
-scalar AODVNetwork.host[4].app[0] "Total received" 7
+scalar AODVNetwork.host[4].app[0] "Total received" 4
 scalar AODVNetwork.host[4].app[0] "Total deleted" 0
 scalar AODVNetwork.host[4].app[0] outOfOrderPk:count 0
 attr interpolationmode none
@@ -2687,22 +2685,22 @@ scalar AODVNetwork.host[4].app[0] outOfOrderPk:sum(packetBytes) 0
 attr interpolationmode none
 attr source outOfOrderPk
 attr title "packets received out of order, sum(packetBytes)"
-scalar AODVNetwork.host[4].app[0] packetReceived:count 7
+scalar AODVNetwork.host[4].app[0] packetReceived:count 4
 attr interpolationmode none
 attr source packetReceived
 attr title "packets received, count"
-scalar AODVNetwork.host[4].app[0] packetReceived:sum(packetBytes) 2800
+scalar AODVNetwork.host[4].app[0] packetReceived:sum(packetBytes) 1600
 attr interpolationmode none
 attr source packetReceived
 attr title "packets received, sum(packetBytes)"
 statistic AODVNetwork.host[4].app[0] endToEndDelay:histogram
-field count 7
-field mean 0.011449158521571
-field stddev 0.010687430899022
+field count 4
+field mean 0.01447876041225
+field stddev 0.0141381421565
 field min 0.007409689334
 field max 0.035685973647
-field sum 0.080144109651
-field sqrsum 0.0016029096912927
+field sum 0.057915041649
+field sqrsum 0.0014381992032136
 attr interpolationmode none
 attr source dataAge(packetReceived)
 attr title "delay, histogram"
@@ -2722,7 +2720,7 @@ bin	0.005	0
 bin	0.0055	0
 bin	0.006	0
 bin	0.0065	0
-bin	0.007	6
+bin	0.007	3
 bin	0.0075	0
 bin	0.008	0
 bin	0.0085	0

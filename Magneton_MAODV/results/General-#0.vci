@@ -1,15 +1,15 @@
-                                                                
+file 35641 1694603432                                           
 version 2
-run General-0-20230912-16:34:06-48772
+run General-0-20230913-14:09:33-12544
 attr configname General
-attr datetime 20230912-16:34:06
+attr datetime 20230913-14:09:33
 attr experiment General
 attr inifile omnetpp.ini
 attr iterationvars ""
 attr iterationvarsf ""
 attr measurement ""
 attr network AODVNetwork
-attr processid 48772
+attr processid 12544
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -36,25 +36,29 @@ param *.host[1].mobility.initialZ 0m
 param *.host[2].mobility.initialX 400m
 param *.host[2].mobility.initialY 100m
 param *.host[2].mobility.initialZ 0m
-param *.host[3].mobility.initialX 500m
-param *.host[3].mobility.initialY 300m
+param *.host[3].mobility.initialX 450m
+param *.host[3].mobility.initialY 200m
 param *.host[3].mobility.initialZ 0m
-param *.host[4].mobility.initialX 400m
-param *.host[4].mobility.initialY 400m
+param *.host[4].mobility.initialX 500m
+param *.host[4].mobility.initialY 300m
 param *.host[4].mobility.initialZ 0m
-param *.host[5].mobility.initialX 300m
-param *.host[5].mobility.initialY 500m
+param *.host[5].mobility.initialX 400m
+param *.host[5].mobility.initialY 400m
 param *.host[5].mobility.initialZ 0m
-param *.host[6].mobility.initialX 450m
-param *.host[6].mobility.initialY 200m
+param *.host[6].mobility.initialX 300m
+param *.host[6].mobility.initialY 500m
 param *.host[6].mobility.initialZ 0m
 param *.host[*].numApps 1
-param *.host[*].app[0].typename "\"UdpBasicApp\""
+param *.host[*].app[0].typename "\"UdpBasicBurst\""
 param *.host[0].app[0].destAddresses "\"192.168.0.5\""
-param *.host[*].app[0].destPort 654
+param *.host[*].app[0].localPort 100
+param *.host[*].app[0].chooseDestAddrMode "\"once\""
+param *.host[*].app[0].destPort 100
 param *.host[*].app[0].messageLength 400B
 param *.host[0].app[0].startTime 1s
-param *.host[*].app[0].sendInterval 1s
+param *.host[*].app[0].sendInterval 0.1s
+param *.host[*].app[0].sleepDuration 0.1s
+param *.host[*].app[0].burstDuration 0.5s
 param **.hasStatus true
 
 vector 0 AODVNetwork.host[0].wlan[0].radio radioMode:vector ETV
@@ -274,167 +278,250 @@ vector 54 AODVNetwork.host[2].wlan[0].mac sentDownPk:vector(packetBytes) ETV
 attr interpolationmode none
 attr source packetSentToLower
 attr title "packets sent to lower layer, vector(packetBytes)"
-vector 55 AODVNetwork.host[6].wlan[0].mac rcvdPkFromLl:vector(packetBytes) ETV
+vector 55 AODVNetwork.host[3].wlan[0].mac rcvdPkFromLl:vector(packetBytes) ETV
 attr interpolationmode none
 attr source packetReceivedFromLower
 attr title "packets received from lower layer, vector(packetBytes)"
-vector 56 AODVNetwork.host[6].wlan[0].mac passedUpPk:vector(packetBytes) ETV
+vector 56 AODVNetwork.host[3].wlan[0].mac passedUpPk:vector(packetBytes) ETV
 attr interpolationmode none
 attr source packetSentToUpper
 attr title "packets passed to higher layer, vector(packetBytes)"
-vector 57 AODVNetwork.host[6].udp packetReceived:vector(packetBytes) ETV
+vector 57 AODVNetwork.host[3].udp packetReceived:vector(packetBytes) ETV
 attr interpolationmode none
 attr source packetReceived
 attr title "packets received, vector(packetBytes)"
-vector 58 AODVNetwork.host[6].udp passedUpPk:vector(count) ETV
+vector 58 AODVNetwork.host[3].udp passedUpPk:vector(count) ETV
 attr interpolationmode none
 attr source packetSentToUpper
 attr title "packets passed up, vector(count)"
-vector 59 AODVNetwork.host[6].udp packetSent:vector(packetBytes) ETV
+vector 59 AODVNetwork.host[3].udp packetSent:vector(packetBytes) ETV
 attr interpolationmode none
 attr source packetSent
 attr title "packets sent, vector(packetBytes)"
-vector 60 AODVNetwork.host[6].wlan[0].mac rcvdPkFromHl:vector(packetBytes) ETV
+vector 60 AODVNetwork.host[3].wlan[0].mac rcvdPkFromHl:vector(packetBytes) ETV
 attr interpolationmode none
 attr source packetReceivedFromUpper
 attr title "packets received from higher layer, vector(packetBytes)"
-vector 61 AODVNetwork.host[6].wlan[0].mac.queue packetPushed:vector(packetBytes) ETV
+vector 61 AODVNetwork.host[3].wlan[0].mac.queue packetPushed:vector(packetBytes) ETV
 attr interpolationmode none
 attr title "packet pushed, vector(packetBytes)"
-vector 62 AODVNetwork.host[6].wlan[0].mac.queue queueLength:vector ETV
+vector 62 AODVNetwork.host[3].wlan[0].mac.queue queueLength:vector ETV
 attr interpolationmode sample-hold
 attr source "count(packetPushed) - count(packetPopped) - count(packetRemoved) - count(packetDropped)"
 attr title "queue length, vector"
-vector 63 AODVNetwork.host[6].wlan[0].mac.queue packetPopped:vector(packetBytes) ETV
+vector 63 AODVNetwork.host[3].wlan[0].mac.queue packetPopped:vector(packetBytes) ETV
 attr interpolationmode none
 attr title "packet popped, vector(packetBytes)"
-vector 64 AODVNetwork.host[6].wlan[0].mac.queue queueingTime:vector ETV
+vector 64 AODVNetwork.host[3].wlan[0].mac.queue queueingTime:vector ETV
 attr interpolationmode none
 attr source queueingTime(packetPopped)
 attr title "queueing times, vector"
 attr unit s
-vector 65 AODVNetwork.host[6].wlan[0].mac sentDownPk:vector(packetBytes) ETV
+vector 65 AODVNetwork.host[3].wlan[0].mac sentDownPk:vector(packetBytes) ETV
 attr interpolationmode none
 attr source packetSentToLower
 attr title "packets sent to lower layer, vector(packetBytes)"
-vector 66 AODVNetwork.host[3].wlan[0].mac rcvdPkFromLl:vector(packetBytes) ETV
+vector 66 AODVNetwork.host[4].wlan[0].mac rcvdPkFromLl:vector(packetBytes) ETV
 attr interpolationmode none
 attr source packetReceivedFromLower
 attr title "packets received from lower layer, vector(packetBytes)"
-vector 67 AODVNetwork.host[3].wlan[0].mac passedUpPk:vector(packetBytes) ETV
+vector 67 AODVNetwork.host[4].wlan[0].mac passedUpPk:vector(packetBytes) ETV
 attr interpolationmode none
 attr source packetSentToUpper
 attr title "packets passed to higher layer, vector(packetBytes)"
-vector 68 AODVNetwork.host[3].udp packetReceived:vector(packetBytes) ETV
+vector 68 AODVNetwork.host[4].udp packetReceived:vector(packetBytes) ETV
 attr interpolationmode none
 attr source packetReceived
 attr title "packets received, vector(packetBytes)"
-vector 69 AODVNetwork.host[3].udp passedUpPk:vector(count) ETV
+vector 69 AODVNetwork.host[4].udp passedUpPk:vector(count) ETV
 attr interpolationmode none
 attr source packetSentToUpper
 attr title "packets passed up, vector(count)"
-vector 70 AODVNetwork.host[3].udp packetSent:vector(packetBytes) ETV
+vector 70 AODVNetwork.host[4].udp packetSent:vector(packetBytes) ETV
 attr interpolationmode none
 attr source packetSent
 attr title "packets sent, vector(packetBytes)"
-vector 71 AODVNetwork.host[3].wlan[0].mac rcvdPkFromHl:vector(packetBytes) ETV
-attr interpolationmode none
-attr source packetReceivedFromUpper
-attr title "packets received from higher layer, vector(packetBytes)"
-vector 72 AODVNetwork.host[3].wlan[0].mac.queue packetPushed:vector(packetBytes) ETV
-attr interpolationmode none
-attr title "packet pushed, vector(packetBytes)"
-vector 73 AODVNetwork.host[3].wlan[0].mac.queue queueLength:vector ETV
-attr interpolationmode sample-hold
-attr source "count(packetPushed) - count(packetPopped) - count(packetRemoved) - count(packetDropped)"
-attr title "queue length, vector"
-vector 74 AODVNetwork.host[3].wlan[0].mac.queue packetPopped:vector(packetBytes) ETV
-attr interpolationmode none
-attr title "packet popped, vector(packetBytes)"
-vector 75 AODVNetwork.host[3].wlan[0].mac.queue queueingTime:vector ETV
-attr interpolationmode none
-attr source queueingTime(packetPopped)
-attr title "queueing times, vector"
-attr unit s
-vector 76 AODVNetwork.host[3].wlan[0].mac sentDownPk:vector(packetBytes) ETV
-attr interpolationmode none
-attr source packetSentToLower
-attr title "packets sent to lower layer, vector(packetBytes)"
-vector 77 AODVNetwork.host[4].wlan[0].mac rcvdPkFromLl:vector(packetBytes) ETV
-attr interpolationmode none
-attr source packetReceivedFromLower
-attr title "packets received from lower layer, vector(packetBytes)"
-vector 78 AODVNetwork.host[4].wlan[0].mac passedUpPk:vector(packetBytes) ETV
-attr interpolationmode none
-attr source packetSentToUpper
-attr title "packets passed to higher layer, vector(packetBytes)"
-vector 79 AODVNetwork.host[4].udp packetReceived:vector(packetBytes) ETV
-attr interpolationmode none
-attr source packetReceived
-attr title "packets received, vector(packetBytes)"
-vector 80 AODVNetwork.host[4].udp passedUpPk:vector(count) ETV
-attr interpolationmode none
-attr source packetSentToUpper
-attr title "packets passed up, vector(count)"
-vector 81 AODVNetwork.host[4].udp packetSent:vector(packetBytes) ETV
-attr interpolationmode none
-attr source packetSent
-attr title "packets sent, vector(packetBytes)"
-vector 82 AODVNetwork.host[4].ipv4.arp arpRequestSent:vector(packetBytes) ETV
+vector 71 AODVNetwork.host[4].ipv4.arp arpRequestSent:vector(packetBytes) ETV
 attr source arpRequestSent
 attr title "ARP request sent, vector(packetBytes)"
-vector 83 AODVNetwork.host[4].wlan[0].mac rcvdPkFromHl:vector(packetBytes) ETV
+vector 72 AODVNetwork.host[4].wlan[0].mac rcvdPkFromHl:vector(packetBytes) ETV
 attr interpolationmode none
 attr source packetReceivedFromUpper
 attr title "packets received from higher layer, vector(packetBytes)"
-vector 84 AODVNetwork.host[4].wlan[0].mac.queue packetPushed:vector(packetBytes) ETV
+vector 73 AODVNetwork.host[4].wlan[0].mac.queue packetPushed:vector(packetBytes) ETV
 attr interpolationmode none
 attr title "packet pushed, vector(packetBytes)"
-vector 85 AODVNetwork.host[4].wlan[0].mac.queue queueLength:vector ETV
+vector 74 AODVNetwork.host[4].wlan[0].mac.queue queueLength:vector ETV
 attr interpolationmode sample-hold
 attr source "count(packetPushed) - count(packetPopped) - count(packetRemoved) - count(packetDropped)"
 attr title "queue length, vector"
-vector 86 AODVNetwork.host[4].wlan[0].mac.queue packetPopped:vector(packetBytes) ETV
+vector 75 AODVNetwork.host[4].wlan[0].mac.queue packetPopped:vector(packetBytes) ETV
 attr interpolationmode none
 attr title "packet popped, vector(packetBytes)"
-vector 87 AODVNetwork.host[4].wlan[0].mac.queue queueingTime:vector ETV
+vector 76 AODVNetwork.host[4].wlan[0].mac.queue queueingTime:vector ETV
 attr interpolationmode none
 attr source queueingTime(packetPopped)
 attr title "queueing times, vector"
 attr unit s
-vector 88 AODVNetwork.host[4].wlan[0].mac sentDownPk:vector(packetBytes) ETV
+vector 77 AODVNetwork.host[4].wlan[0].mac sentDownPk:vector(packetBytes) ETV
 attr interpolationmode none
 attr source packetSentToLower
 attr title "packets sent to lower layer, vector(packetBytes)"
-vector 89 AODVNetwork.host[5].wlan[0].mac rcvdPkFromLl:vector(packetBytes) ETV
+vector 78 AODVNetwork.host[3].ipv4.arp arpReplySent:vector(packetBytes) ETV
+attr source arpReplySent
+attr title "ARP replies sent, vector(packetBytes)"
+vector 79 AODVNetwork.host[5].wlan[0].mac rcvdPkFromLl:vector(packetBytes) ETV
 attr interpolationmode none
 attr source packetReceivedFromLower
 attr title "packets received from lower layer, vector(packetBytes)"
-vector 90 AODVNetwork.host[5].wlan[0].mac passedUpPk:vector(packetBytes) ETV
+vector 80 AODVNetwork.host[5].wlan[0].mac passedUpPk:vector(packetBytes) ETV
 attr interpolationmode none
 attr source packetSentToUpper
 attr title "packets passed to higher layer, vector(packetBytes)"
-vector 91 AODVNetwork.host[3].ipv4.arp arpReplySent:vector(packetBytes) ETV
-attr source arpReplySent
-attr title "ARP replies sent, vector(packetBytes)"
-vector 92 AODVNetwork.host[6].wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes) ETV
+vector 81 AODVNetwork.host[2].wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes) ETV
 attr interpolationmode none
 attr source packetDropReasonIsNotAddressedToUs(packetDropped)
 attr title "packet drop: not addressed to us, vector(packetBytes)"
-vector 93 AODVNetwork.host[5].wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes) ETV
+vector 82 AODVNetwork.host[5].wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes) ETV
 attr interpolationmode none
 attr source packetDropReasonIsNotAddressedToUs(packetDropped)
 attr title "packet drop: not addressed to us, vector(packetBytes)"
-vector 94 AODVNetwork.host[3].ipv4.arp arpRequestSent:vector(packetBytes) ETV
+vector 83 AODVNetwork.host[3].ipv4.arp arpRequestSent:vector(packetBytes) ETV
 attr source arpRequestSent
 attr title "ARP request sent, vector(packetBytes)"
-vector 95 AODVNetwork.host[6].ipv4.arp arpReplySent:vector(packetBytes) ETV
+vector 84 AODVNetwork.host[2].ipv4.arp arpReplySent:vector(packetBytes) ETV
 attr source arpReplySent
 attr title "ARP replies sent, vector(packetBytes)"
-vector 96 AODVNetwork.host[2].wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes) ETV
+vector 85 AODVNetwork.host[1].wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes) ETV
 attr interpolationmode none
 attr source packetDropReasonIsNotAddressedToUs(packetDropped)
 attr title "packet drop: not addressed to us, vector(packetBytes)"
-vector 97 AODVNetwork.host[4].wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes) ETV
+vector 86 AODVNetwork.host[4].wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes) ETV
 attr interpolationmode none
-attr source packetDropReasonIsNotAddressedToUs(packetDroppe
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, vector(packetBytes)"
+vector 87 AODVNetwork.host[2].ipv4.arp arpRequestSent:vector(packetBytes) ETV
+attr source arpRequestSent
+attr title "ARP request sent, vector(packetBytes)"
+vector 88 AODVNetwork.host[1].ipv4.arp arpReplySent:vector(packetBytes) ETV
+attr source arpReplySent
+attr title "ARP replies sent, vector(packetBytes)"
+vector 89 AODVNetwork.host[0].wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, vector(packetBytes)"
+vector 90 AODVNetwork.host[3].wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, vector(packetBytes)"
+vector 91 AODVNetwork.host[1].ipv4.arp arpRequestSent:vector(packetBytes) ETV
+attr source arpRequestSent
+attr title "ARP request sent, vector(packetBytes)"
+vector 92 AODVNetwork.host[0].ipv4.arp arpReplySent:vector(packetBytes) ETV
+attr source arpReplySent
+attr title "ARP replies sent, vector(packetBytes)"
+vector 93 AODVNetwork.host[4].app[0] packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, vector(packetBytes)"
+vector 94 AODVNetwork.host[4].app[0] endToEndDelay:vector ETV
+attr interpolationmode none
+attr source dataAge(packetReceived)
+attr title "delay, vector"
+attr unit s
+0	20472 27 0 0 0 0 3 0 4 4 16
+1	20499 27 0 0 0 0 3 0 4 4 16
+2	20526 27 0 0 0 0 3 0 4 4 16
+3	20553 27 0 0 0 0 3 0 4 4 16
+4	20580 27 0 0 0 0 3 0 4 4 16
+5	20607 27 0 0 0 0 3 0 4 4 16
+6	20634 27 0 0 0 0 3 0 4 4 16
+7	20661 415 0 658 0 1.303704943462 18 1 3 35 85
+8	21076 244 0 640 0 1.301852 13 1 2 19 31
+9	21320 674 0 681 0 1.305557415193 29 1 3 57 141
+10	21994 406 0 657 0 1.303704471731 17 1 2 25 41
+11	22400 958 0 694 0 1.307409689334 39 1 3 77 185
+12	23358 406 0 675 0 1.305556943462 17 1 2 25 41
+13	23764 508 0 676 0 1.305557316398 21 1 3 41 101
+14	24272 410 0 693 0 1.307409316398 17 1 2 25 41
+15	24682 535 0 695 0 1.307409689334 22 1 3 43 101
+16	25217 110 0 186 0 1.015736001345 5 1 2 7 11
+17	25327 110 0 192 0 1.015736473076 5 1 3 9 21
+18	25437 10 0 0 0 0 1 1 1 1 1
+19	25447 10 0 0 0 0 1 1 1 1 1
+20	25457 10 0 0 0 0 1 1 1 1 1
+21	25467 77 22 709 1 1.4 5 400 400 2000 800000
+22	25544 102 30 710 1 1.4 6 32 408 2072 833344
+23	25646 126 41 632 1.002744067512 1.3 6 28 428 1792 736224
+24	25772 126 41 632 1.002744067512 1.3 6 28 428 1792 736224
+25	25898 232 41 632 1.002744067512 1.3 12 0 1 6 6
+26	26130 126 41 632 1.002744067512 1.3 6 28 428 1792 736224
+27	26256 116 41 632 1.002744067512 1.3 6 0 0 0 0
+28	26372 126 41 632 1.002744067512 1.3 6 51 451 1930 821830
+29	26498 369 51 682 1.003092539243 1.305557415193 14 51 451 3982 1651302
+30	26867 237 51 642 1.003092539243 1.301852471731 9 28 428 1920 742016
+31	27104 77 53 314 1.003092539243 1.024714453233 3 28 32 92 2832
+32	27181 74 53 314 1.003092539243 1.024714453233 3 1 3 6 14
+33	27255 50 61 325 1.006056762325 1.02743886912 2 28 32 60 1808
+34	27305 210 63 644 1.006056762325 1.301852471731 8 28 428 1868 739312
+35	27515 210 63 644 1.006056762325 1.301852471731 8 28 428 1868 739312
+36	27725 396 63 644 1.006056762325 1.301852471731 16 0 1 8 8
+37	28121 210 63 644 1.006056762325 1.301852471731 8 28 428 1868 739312
+38	28331 198 63 644 1.006056762325 1.301852471731 8 0 0 0 0
+39	28529 210 63 644 1.006056762325 1.301852471731 8 51 451 2052 829472
+40	28739 211 74 660 1.006405234056 1.303704943462 8 51 451 2052 829472
+41	28950 77 74 374 1.006405234056 1.028276284313 3 28 52 128 5792
+42	29027 423 75 696 1.006405234056 1.307409689334 16 51 451 4104 1658944
+43	29450 263 75 661 1.006405234056 1.303704943462 10 28 428 1948 742800
+44	29713 51 78 377 1.006405234056 1.028276284313 2 28 32 60 1808
+45	29764 49 78 377 1.006405234056 1.028276284313 2 1 2 3 5
+46	29813 77 79 253 1.006405234056 1.019587309941 3 28 32 92 2832
+47	29890 74 79 253 1.006405234056 1.019587309941 3 1 3 6 14
+48	29964 50 87 261 1.009981180881 1.02387703804 2 28 32 60 1808
+49	30014 210 89 663 1.009981180881 1.303704943462 8 28 428 1868 739312
+50	30224 210 89 663 1.009981180881 1.303704943462 8 28 428 1868 739312
+51	30434 396 89 663 1.009981180881 1.303704943462 16 0 1 8 8
+52	30830 210 89 663 1.009981180881 1.303704943462 8 28 428 1868 739312
+53	31040 198 89 663 1.009981180881 1.303704943462 8 0 0 0 0
+54	31238 210 89 663 1.009981180881 1.303704943462 8 51 451 2052 829472
+55	31448 263 99 677 1.010329553817 1.305557316398 10 51 451 2174 837114
+56	31711 237 99 677 1.010329553817 1.305557316398 9 28 428 1896 740096
+57	31948 52 101 190 1.010329553817 1.015736374281 2 28 32 60 1808
+58	32000 50 101 190 1.010329553817 1.015736374281 2 1 2 3 5
+59	32050 52 114 200 1.014550882537 1.018750191133 2 28 32 60 1808
+60	32102 212 116 679 1.014550882537 1.305557316398 8 28 428 1868 739312
+61	32314 212 116 679 1.014550882537 1.305557316398 8 28 428 1868 739312
+62	32526 400 116 679 1.014550882537 1.305557316398 16 0 1 8 8
+63	32926 212 116 679 1.014550882537 1.305557316398 8 28 428 1868 739312
+64	33138 200 116 679 1.014550882537 1.305557316398 8 0 0 0 0
+65	33338 212 116 679 1.014550882537 1.305557316398 8 51 451 2052 829472
+66	33550 212 128 697 1.014899255473 1.307409689334 8 51 451 2052 829472
+67	33762 186 128 697 1.014899255473 1.307409689334 7 28 428 1820 737008
+68	33948 134 132 699 1.014899255473 1.307409689334 5 32 408 1664 666880
+69	34082 125 132 699 1.014899255473 1.307409689334 5 1 5 15 55
+70	34207 26 135 135 1.014899255473 1.014899255473 1 28 28 28 784
+71	34233 26 136 136 1.014899255473 1.014899255473 1 28 28 28 784
+72	34259 52 137 174 1.014899255473 1.015404001345 2 28 48 76 3088
+73	34311 52 137 174 1.014899255473 1.015404001345 2 28 48 76 3088
+74	34363 100 137 174 1.014899255473 1.015404001345 4 0 1 2 2
+75	34463 52 137 174 1.014899255473 1.015404001345 2 28 48 76 3088
+76	34515 50 137 174 1.014899255473 1.015404001345 2 0 0 0 0
+77	34565 52 137 174 1.014899255473 1.015404001345 2 51 71 122 7642
+78	34617 26 152 152 1.015151628409 1.015151628409 1 28 28 28 784
+79	34643 52 156 193 1.015151727204 1.015736473076 2 51 71 122 7642
+80	34695 26 156 156 1.015151727204 1.015151727204 1 28 28 28 784
+81	34721 160 171 696 1.015404001345 1.307409689334 6 51 451 1926 821246
+82	34881 26 193 193 1.015736473076 1.015736473076 1 71 71 71 5041
+83	34907 26 201 201 1.018750191133 1.018750191133 1 28 28 28 784
+84	34933 26 215 215 1.019002564069 1.019002564069 1 28 28 28 784
+85	34959 132 236 682 1.0192550358 1.305557415193 5 51 451 1855 816205
+86	35091 26 251 251 1.019587309941 1.019587309941 1 71 71 71 5041
+87	35117 25 262 262 1.02387703804 1.02387703804 1 28 28 28 784
+88	35142 26 277 277 1.024129509771 1.024129509771 1 28 28 28 784
+89	35168 134 293 660 1.024381981502 1.303704943462 5 51 451 1855 816205
+90	35302 26 310 310 1.024714354438 1.024714354438 1 71 71 71 5041
+91	35328 25 326 326 1.02743886912 1.02743886912 1 28 28 28 784
+92	35353 26 340 340 1.027691340851 1.027691340851 1 28 28 28 784
+93	35379 108 457 700 1.035685973647 1.307409689334 4 400 400 1600 640000
+94	35487 152 457 700 1.035685973647 1.307409689334 4 0.007409689334 0.035685973647 0.057915041649 0.0014381992032136
+
