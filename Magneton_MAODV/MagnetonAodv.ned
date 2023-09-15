@@ -9,18 +9,7 @@ import inet.physicallayer.unitdisk.UnitDiskRadioMedium;
 //import inet.node.ethernet.Eth100M;
 import ned.DatarateChannel;
 import inet.routing.aodv.Aodv;
-
-
-//module EthernetAodvRouter extends StandardHost {
-//    //forwarding = default(true);
-//    submodules:
-//        aodv: Aodv {
-//            @display("p=825,226");
-//        }
-//    connections:
-//        aodv.socketOut --> at.in++;
-//        aodv.socketIn <-- at.out++;
-//}
+import inet.linklayer.ethernet.EtherHub;
 
 
 network AODVNetwork
@@ -29,12 +18,12 @@ network AODVNetwork
         int numHosts;
         @display("bgb=650,650;bgi=background/streetmap;bgu=m");
 	
-//	types:
-//	    channel ethline extends DatarateChannel
-//        {
-//            delay = 50ns;
-//            datarate = 100Mbps;
-//        }
+	types:
+	    channel ethline extends DatarateChannel
+        {
+            delay = 50ns;
+            datarate = 100Mbps;
+        }
 	    
     submodules:
 
@@ -46,8 +35,7 @@ network AODVNetwork
         
         configurator: Ipv4NetworkConfigurator {
             parameters:
-                config = xml("<config><interface hosts='*' address='192.168.x.x' netmask='255.255.0.0'/></config>");
-                @display("p=100,100;is=s");
+			config = xml("<config><interface hosts='*' address='145.236.x.x' netmask='255.255.x.x'/></config>");                @display("p=100,100;is=s");
                 
         }
         routingTableRecorder: RoutingTableRecorder {
@@ -62,18 +50,27 @@ network AODVNetwork
         }
         
         host[numHosts]: AodvRouter {
-            
             parameters:
-
+					
                 @display("i=device/satellite");
                 aodv.activeRouteTimeout = 6s;
                 interfaceTable.displayAddresses = true;
-                aodv.ttlStart = 8;
-                        
+                aodv.ttlStart = 1;
+                numWlanInterfaces=0;
+                numEthInterfaces=3;
+                aodv.interface = "eth0";
         }
-//    connections allowunconnected:
-//        //for i=0..numHosts-2 {
-//            host[0].pppg++ <--> ethline <--> host[1].pppg++;
-//            //host[0].pppg++ <--> ethline <--> host[1].pppg++;
-//        //}
+        hostSendHub[numHosts]: EtherHub{
+
+                       }
+        
+    connections allowunconnected:
+        for i=0..numHosts-2 {
+            host[i].ethg[0] <--> ethline <--> hostSendHub[i].ethg++;
+            host[i].ethg[1] <--> ethline <--> hostSendHub[i+1].ethg++;
+            hostSendHub[i].ethg++<--> ethline <--> host[i+1].ethg[2];
+           
+            
+            
+        }
 }
