@@ -1,21 +1,20 @@
-file 6880 1695046581                                            
+file 25251 1695051604                                           
 version 2
-run General-0-20230918-17:15:23-6820
+run General-0-20230918-18:39:14-25416
 attr configname General
-attr datetime 20230918-17:15:23
+attr datetime 20230918-18:39:14
 attr experiment General
 attr inifile omnetpp.ini
 attr iterationvars ""
 attr iterationvarsf ""
 attr measurement ""
 attr network AODVNetwork
-attr processid 6820
+attr processid 25416
 attr repetition 0
 attr replication #0
 attr resultdir results
 attr runnumber 0
 attr seedset 0
-param **.eth[*].mac.duplexMode true
 param **.wlan[*].typename "\"AckingWirelessInterface\""
 param **.wlan[*].bitrate 2Mbps
 param **.wlan[*].mac.headerLength 23B
@@ -59,7 +58,7 @@ param *.host[0].app[0].startTime 1s
 param *.host[*].app[0].sendInterval 0.1s
 param *.host[*].app[0].sleepDuration 0.1s
 param *.host[*].app[0].burstDuration 0.5s
-param *.host[0].app[0].destPort 654
+param *.host[0].app[0].destPort 100
 param *.host[0].app[0].destAddresses "\"192.168.0.41\""
 param **.hasStatus true
 
@@ -155,27 +154,400 @@ vector 22 AODVNetwork.host[0].udp packetSent:vector(packetBytes) ETV
 attr interpolationmode none
 attr source packetSent
 attr title "packets sent, vector(packetBytes)"
-0	6526 27 0 0 0 0 3 0 4 4 16
-1	6553 27 0 0 0 0 3 0 4 4 16
-2	6580 27 0 0 0 0 3 0 4 4 16
-3	6607 27 0 0 0 0 3 0 4 4 16
-4	6634 27 0 0 0 0 3 0 4 4 16
-5	6661 27 0 0 0 0 3 0 4 4 16
-6	6688 27 0 0 0 0 3 0 4 4 16
-7	6715 9 0 0 0 0 1 1 1 1 1
-8	6724 9 0 0 0 0 1 1 1 1 1
-9	6733 9 0 0 0 0 1 1 1 1 1
-10	6742 10 0 0 0 0 1 1 1 1 1
-11	6752 10 0 0 0 0 1 1 1 1 1
-12	6762 10 0 0 0 0 1 1 1 1 1
-13	6772 10 0 0 0 0 1 1 1 1 1
-14	6782 10 0 0 0 0 1 1 1 1 1
-15	6792 10 0 0 0 0 1 1 1 1 1
-16	6802 10 0 0 0 0 1 1 1 1 1
-17	6812 10 0 0 0 0 1 1 1 1 1
-18	6822 10 0 0 0 0 1 1 1 1 1
-19	6832 10 0 0 0 0 1 1 1 1 1
-20	6842 10 0 0 0 0 1 1 1 1 1
-21	6852 13 22 22 1 1 1 400 400 400 160000
-22	6865 13 30 30 1 1 1 408 408 408 166464
+vector 23 AODVNetwork.host[0].wlan[0].mac rcvdPkFromHl:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, vector(packetBytes)"
+vector 24 AODVNetwork.host[0].wlan[0].mac.queue packetPushed:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packet pushed, vector(packetBytes)"
+vector 25 AODVNetwork.host[0].wlan[0].mac.queue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr source "count(packetPushed) - count(packetPopped) - count(packetRemoved) - count(packetDropped)"
+attr title "queue length, vector"
+vector 26 AODVNetwork.host[0].wlan[0].mac.queue packetPopped:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packet popped, vector(packetBytes)"
+vector 27 AODVNetwork.host[0].wlan[0].mac.queue queueingTime:vector ETV
+attr interpolationmode none
+attr source queueingTime(packetPopped)
+attr title "queueing times, vector"
+attr unit s
+vector 28 AODVNetwork.host[0].wlan[0].mac sentDownPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets sent to lower layer, vector(packetBytes)"
+vector 29 AODVNetwork.host[1].wlan[0].mac rcvdPkFromLl:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceivedFromLower
+attr title "packets received from lower layer, vector(packetBytes)"
+vector 30 AODVNetwork.host[1].wlan[0].mac passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, vector(packetBytes)"
+vector 31 AODVNetwork.host[1].udp packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, vector(packetBytes)"
+vector 32 AODVNetwork.host[1].udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed up, vector(count)"
+vector 33 AODVNetwork.host[1].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 34 AODVNetwork.host[1].wlan[0].mac rcvdPkFromHl:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, vector(packetBytes)"
+vector 35 AODVNetwork.host[1].wlan[0].mac.queue packetPushed:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packet pushed, vector(packetBytes)"
+vector 36 AODVNetwork.host[1].wlan[0].mac.queue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr source "count(packetPushed) - count(packetPopped) - count(packetRemoved) - count(packetDropped)"
+attr title "queue length, vector"
+vector 37 AODVNetwork.host[1].wlan[0].mac.queue packetPopped:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packet popped, vector(packetBytes)"
+vector 38 AODVNetwork.host[1].wlan[0].mac.queue queueingTime:vector ETV
+attr interpolationmode none
+attr source queueingTime(packetPopped)
+attr title "queueing times, vector"
+attr unit s
+vector 39 AODVNetwork.host[1].wlan[0].mac sentDownPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets sent to lower layer, vector(packetBytes)"
+vector 40 AODVNetwork.host[0].wlan[0].mac rcvdPkFromLl:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceivedFromLower
+attr title "packets received from lower layer, vector(packetBytes)"
+vector 41 AODVNetwork.host[0].wlan[0].mac passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, vector(packetBytes)"
+vector 42 AODVNetwork.host[2].wlan[0].mac rcvdPkFromLl:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceivedFromLower
+attr title "packets received from lower layer, vector(packetBytes)"
+vector 43 AODVNetwork.host[2].wlan[0].mac passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, vector(packetBytes)"
+vector 44 AODVNetwork.host[0].udp packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, vector(packetBytes)"
+vector 45 AODVNetwork.host[0].udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed up, vector(count)"
+vector 46 AODVNetwork.host[2].udp packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, vector(packetBytes)"
+vector 47 AODVNetwork.host[2].udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed up, vector(count)"
+vector 48 AODVNetwork.host[2].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 49 AODVNetwork.host[2].wlan[0].mac rcvdPkFromHl:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, vector(packetBytes)"
+vector 50 AODVNetwork.host[2].wlan[0].mac.queue packetPushed:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packet pushed, vector(packetBytes)"
+vector 51 AODVNetwork.host[2].wlan[0].mac.queue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr source "count(packetPushed) - count(packetPopped) - count(packetRemoved) - count(packetDropped)"
+attr title "queue length, vector"
+vector 52 AODVNetwork.host[2].wlan[0].mac.queue packetPopped:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packet popped, vector(packetBytes)"
+vector 53 AODVNetwork.host[2].wlan[0].mac.queue queueingTime:vector ETV
+attr interpolationmode none
+attr source queueingTime(packetPopped)
+attr title "queueing times, vector"
+attr unit s
+vector 54 AODVNetwork.host[2].wlan[0].mac sentDownPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets sent to lower layer, vector(packetBytes)"
+vector 55 AODVNetwork.host[3].wlan[0].mac rcvdPkFromLl:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceivedFromLower
+attr title "packets received from lower layer, vector(packetBytes)"
+vector 56 AODVNetwork.host[3].wlan[0].mac passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, vector(packetBytes)"
+vector 57 AODVNetwork.host[3].udp packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, vector(packetBytes)"
+vector 58 AODVNetwork.host[3].udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed up, vector(count)"
+vector 59 AODVNetwork.host[3].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 60 AODVNetwork.host[3].wlan[0].mac rcvdPkFromHl:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, vector(packetBytes)"
+vector 61 AODVNetwork.host[3].wlan[0].mac.queue packetPushed:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packet pushed, vector(packetBytes)"
+vector 62 AODVNetwork.host[3].wlan[0].mac.queue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr source "count(packetPushed) - count(packetPopped) - count(packetRemoved) - count(packetDropped)"
+attr title "queue length, vector"
+vector 63 AODVNetwork.host[3].wlan[0].mac.queue packetPopped:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packet popped, vector(packetBytes)"
+vector 64 AODVNetwork.host[3].wlan[0].mac.queue queueingTime:vector ETV
+attr interpolationmode none
+attr source queueingTime(packetPopped)
+attr title "queueing times, vector"
+attr unit s
+vector 65 AODVNetwork.host[3].wlan[0].mac sentDownPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets sent to lower layer, vector(packetBytes)"
+vector 66 AODVNetwork.host[4].wlan[0].mac rcvdPkFromLl:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceivedFromLower
+attr title "packets received from lower layer, vector(packetBytes)"
+vector 67 AODVNetwork.host[4].wlan[0].mac passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, vector(packetBytes)"
+vector 68 AODVNetwork.host[4].udp packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, vector(packetBytes)"
+vector 69 AODVNetwork.host[4].udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed up, vector(count)"
+vector 70 AODVNetwork.host[4].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 71 AODVNetwork.host[4].wlan[0].mac rcvdPkFromHl:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, vector(packetBytes)"
+vector 72 AODVNetwork.host[4].wlan[0].mac.queue packetPushed:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packet pushed, vector(packetBytes)"
+vector 73 AODVNetwork.host[4].wlan[0].mac.queue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr source "count(packetPushed) - count(packetPopped) - count(packetRemoved) - count(packetDropped)"
+attr title "queue length, vector"
+vector 74 AODVNetwork.host[4].wlan[0].mac.queue packetPopped:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packet popped, vector(packetBytes)"
+vector 75 AODVNetwork.host[4].wlan[0].mac.queue queueingTime:vector ETV
+attr interpolationmode none
+attr source queueingTime(packetPopped)
+attr title "queueing times, vector"
+attr unit s
+vector 76 AODVNetwork.host[4].wlan[0].mac sentDownPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets sent to lower layer, vector(packetBytes)"
+vector 77 AODVNetwork.host[5].wlan[0].mac rcvdPkFromLl:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceivedFromLower
+attr title "packets received from lower layer, vector(packetBytes)"
+vector 78 AODVNetwork.host[5].wlan[0].mac passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, vector(packetBytes)"
+vector 79 AODVNetwork.host[5].udp packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, vector(packetBytes)"
+vector 80 AODVNetwork.host[5].udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed up, vector(count)"
+vector 81 AODVNetwork.host[5].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 82 AODVNetwork.host[5].wlan[0].mac rcvdPkFromHl:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, vector(packetBytes)"
+vector 83 AODVNetwork.host[5].wlan[0].mac.queue packetPushed:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packet pushed, vector(packetBytes)"
+vector 84 AODVNetwork.host[5].wlan[0].mac.queue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr source "count(packetPushed) - count(packetPopped) - count(packetRemoved) - count(packetDropped)"
+attr title "queue length, vector"
+vector 85 AODVNetwork.host[5].wlan[0].mac.queue packetPopped:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packet popped, vector(packetBytes)"
+vector 86 AODVNetwork.host[5].wlan[0].mac.queue queueingTime:vector ETV
+attr interpolationmode none
+attr source queueingTime(packetPopped)
+attr title "queueing times, vector"
+attr unit s
+vector 87 AODVNetwork.host[5].wlan[0].mac sentDownPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets sent to lower layer, vector(packetBytes)"
+vector 88 AODVNetwork.host[6].wlan[0].mac rcvdPkFromLl:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceivedFromLower
+attr title "packets received from lower layer, vector(packetBytes)"
+vector 89 AODVNetwork.host[6].wlan[0].mac passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, vector(packetBytes)"
+vector 90 AODVNetwork.host[6].udp packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, vector(packetBytes)"
+vector 91 AODVNetwork.host[6].udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed up, vector(count)"
+vector 92 AODVNetwork.host[6].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 93 AODVNetwork.host[6].wlan[0].mac rcvdPkFromHl:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, vector(packetBytes)"
+vector 94 AODVNetwork.host[6].wlan[0].mac.queue packetPushed:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packet pushed, vector(packetBytes)"
+vector 95 AODVNetwork.host[6].wlan[0].mac.queue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr source "count(packetPushed) - count(packetPopped) - count(packetRemoved) - count(packetDropped)"
+attr title "queue length, vector"
+vector 96 AODVNetwork.host[6].wlan[0].mac.queue packetPopped:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packet popped, vector(packetBytes)"
+vector 97 AODVNetwork.host[6].wlan[0].mac.queue queueingTime:vector ETV
+attr interpolationmode none
+attr source queueingTime(packetPopped)
+attr title "queueing times, vector"
+attr unit s
+vector 98 AODVNetwork.host[6].wlan[0].mac sentDownPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets sent to lower layer, vector(packetBytes)"
+0	21209 27 0 0 0 0 3 0 4 4 16
+1	21236 27 0 0 0 0 3 0 4 4 16
+2	21263 27 0 0 0 0 3 0 4 4 16
+3	21290 27 0 0 0 0 3 0 4 4 16
+4	21317 27 0 0 0 0 3 0 4 4 16
+5	21344 27 0 0 0 0 3 0 4 4 16
+6	21371 27 0 0 0 0 3 0 4 4 16
+7	21398 55 0 72 0 1.006405234056 3 1 3 5 11
+8	21453 55 0 49 0 1.003092067512 3 1 2 4 6
+9	21508 102 0 103 0 1.010329652612 5 1 3 9 21
+10	21610 58 0 71 0 1.006404762325 3 1 2 4 6
+11	21668 108 0 125 0 1.014899255473 5 1 3 9 21
+12	21776 58 0 97 0 1.010329180881 3 1 2 4 6
+13	21834 108 0 152 0 1.018261445261 5 1 3 9 21
+14	21942 60 0 124 0 1.014898882537 3 1 2 4 6
+15	22002 110 0 179 0 1.022899743886 5 1 3 9 21
+16	22112 60 0 151 0 1.018261072325 3 1 2 4 6
+17	22172 110 0 206 0 1.025972631504 5 1 3 9 21
+18	22282 60 0 178 0 1.022899272155 3 1 2 4 6
+19	22342 60 0 180 0 1.022899743886 3 1 3 5 11
+20	22402 60 0 205 0 1.025972159773 3 1 2 4 6
+21	22462 77 22 228 1 1.4 5 400 400 2000 800000
+22	22539 102 30 229 1 1.4 6 32 408 2072 833344
+23	22641 25 41 41 1.002744067512 1.002744067512 1 52 52 52 2704
+24	22666 25 41 41 1.002744067512 1.002744067512 1 52 52 52 2704
+25	22691 48 41 41 1.002744067512 1.002744067512 2 0 1 1 1
+26	22739 25 41 41 1.002744067512 1.002744067512 1 52 52 52 2704
+27	22764 24 41 41 1.002744067512 1.002744067512 1 0 0 0 0
+28	22788 25 41 41 1.002744067512 1.002744067512 1 75 75 75 5625
+29	22813 51 51 104 1.003092539243 1.010329652612 2 75 75 150 11250
+30	22864 51 51 104 1.003092539243 1.010329652612 2 52 52 104 5408
+31	22915 51 53 106 1.003092539243 1.010329652612 2 32 32 64 2048
+32	22966 49 53 106 1.003092539243 1.010329652612 2 1 2 3 5
+33	23015 25 61 61 1.006056762325 1.006056762325 1 32 32 32 1024
+34	23040 25 63 63 1.006056762325 1.006056762325 1 52 52 52 2704
+35	23065 25 63 63 1.006056762325 1.006056762325 1 52 52 52 2704
+36	23090 48 63 63 1.006056762325 1.006056762325 2 0 1 1 1
+37	23138 25 63 63 1.006056762325 1.006056762325 1 52 52 52 2704
+38	23163 24 63 63 1.006056762325 1.006056762325 1 0 0 0 0
+39	23187 25 63 63 1.006056762325 1.006056762325 1 75 75 75 5625
+40	23212 25 74 74 1.006405234056 1.006405234056 1 75 75 75 5625
+41	23237 25 74 74 1.006405234056 1.006405234056 1 52 52 52 2704
+42	23262 51 75 127 1.006405234056 1.014899255473 2 75 75 150 11250
+43	23313 51 75 127 1.006405234056 1.014899255473 2 52 52 104 5408
+44	23364 25 78 78 1.006405234056 1.006405234056 1 32 32 32 1024
+45	23389 24 78 78 1.006405234056 1.006405234056 1 1 1 1 1
+46	23413 51 79 131 1.006405234056 1.014899255473 2 32 32 64 2048
+47	23464 49 79 131 1.006405234056 1.014899255473 2 1 2 3 5
+48	23513 25 87 87 1.009981180881 1.009981180881 1 32 32 32 1024
+49	23538 25 89 89 1.009981180881 1.009981180881 1 52 52 52 2704
+50	23563 25 89 89 1.009981180881 1.009981180881 1 52 52 52 2704
+51	23588 48 89 89 1.009981180881 1.009981180881 2 0 1 1 1
+52	23636 25 89 89 1.009981180881 1.009981180881 1 52 52 52 2704
+53	23661 24 89 89 1.009981180881 1.009981180881 1 0 0 0 0
+54	23685 25 89 89 1.009981180881 1.009981180881 1 75 75 75 5625
+55	23710 51 99 153 1.010329553817 1.018261445261 2 75 75 150 11250
+56	23761 51 99 153 1.010329553817 1.018261445261 2 52 52 104 5408
+57	23812 52 101 155 1.010329553817 1.018261445261 2 32 32 64 2048
+58	23864 50 101 155 1.010329553817 1.018261445261 2 1 2 3 5
+59	23914 26 114 114 1.014550882537 1.014550882537 1 32 32 32 1024
+60	23940 26 116 116 1.014550882537 1.014550882537 1 52 52 52 2704
+61	23966 26 116 116 1.014550882537 1.014550882537 1 52 52 52 2704
+62	23992 50 116 116 1.014550882537 1.014550882537 2 0 1 1 1
+63	24042 26 116 116 1.014550882537 1.014550882537 1 52 52 52 2704
+64	24068 25 116 116 1.014550882537 1.014550882537 1 0 0 0 0
+65	24093 26 116 116 1.014550882537 1.014550882537 1 75 75 75 5625
+66	24119 52 128 181 1.014899255473 1.022899743886 2 75 75 150 11250
+67	24171 52 128 181 1.014899255473 1.022899743886 2 52 52 104 5408
+68	24223 52 132 185 1.014899255473 1.022899743886 2 32 32 64 2048
+69	24275 50 132 185 1.014899255473 1.022899743886 2 1 2 3 5
+70	24325 26 141 141 1.017913072325 1.017913072325 1 32 32 32 1024
+71	24351 26 143 143 1.017913072325 1.017913072325 1 52 52 52 2704
+72	24377 26 143 143 1.017913072325 1.017913072325 1 52 52 52 2704
+73	24403 50 143 143 1.017913072325 1.017913072325 2 0 1 1 1
+74	24453 26 143 143 1.017913072325 1.017913072325 1 52 52 52 2704
+75	24479 25 143 143 1.017913072325 1.017913072325 1 0 0 0 0
+76	24504 26 143 143 1.017913072325 1.017913072325 1 75 75 75 5625
+77	24530 52 158 207 1.018261544056 1.025972631504 2 75 75 150 11250
+78	24582 52 158 207 1.018261544056 1.025972631504 2 52 52 104 5408
+79	24634 52 160 209 1.018261544056 1.025972631504 2 32 32 64 2048
+80	24686 50 160 209 1.018261544056 1.025972631504 2 1 2 3 5
+81	24736 26 168 168 1.022551272155 1.022551272155 1 32 32 32 1024
+82	24762 26 170 170 1.022551272155 1.022551272155 1 52 52 52 2704
+83	24788 26 170 170 1.022551272155 1.022551272155 1 52 52 52 2704
+84	24814 50 170 170 1.022551272155 1.022551272155 2 0 1 1 1
+85	24864 26 170 170 1.022551272155 1.022551272155 1 52 52 52 2704
+86	24890 25 170 170 1.022551272155 1.022551272155 1 0 0 0 0
+87	24915 26 170 170 1.022551272155 1.022551272155 1 75 75 75 5625
+88	24941 26 182 182 1.022899743886 1.022899743886 1 75 75 75 5625
+89	24967 26 182 182 1.022899743886 1.022899743886 1 52 52 52 2704
+90	24993 26 186 186 1.022899743886 1.022899743886 1 32 32 32 1024
+91	25019 25 186 186 1.022899743886 1.022899743886 1 1 1 1 1
+92	25044 26 195 195 1.025624159773 1.025624159773 1 32 32 32 1024
+93	25070 26 197 197 1.025624159773 1.025624159773 1 52 52 52 2704
+94	25096 26 197 197 1.025624159773 1.025624159773 1 52 52 52 2704
+95	25122 50 197 197 1.025624159773 1.025624159773 2 0 1 1 1
+96	25172 26 197 197 1.025624159773 1.025624159773 1 52 52 52 2704
+97	25198 25 197 197 1.025624159773 1.025624159773 1 0 0 0 0
+98	25223 26 197 197 1.025624159773 1.025624159773 1 75 75 75 5625
 
