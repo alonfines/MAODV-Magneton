@@ -18,13 +18,13 @@ network AODVNetwork
         int numHosts;
         @display("bgb=650,650;bgi=background/streetmap;bgu=m");
 	
-	types:
-	    channel ethline extends DatarateChannel
-        {
-            delay = 50ns;
-            datarate = 100Mbps;
-        }
-	    
+//	types:
+//	    channel ethline extends DatarateChannel
+//        {
+//            delay = 50ns;
+//            datarate = 100Mbps;
+//        }
+//	    
     submodules:
 
         radioMedium: UnitDiskRadioMedium {
@@ -35,7 +35,11 @@ network AODVNetwork
         
         configurator: Ipv4NetworkConfigurator {
             parameters:
-			config = xml("<config><interface hosts='*' address='145.236.x.x' netmask='255.255.x.x'/></config>");                @display("p=100,100;is=s");
+			config = xmldoc("ip_config.xml");               
+				
+                     
+			@display("p=100,100;is=s");
+			
                 
         }
         routingTableRecorder: RoutingTableRecorder {
@@ -55,22 +59,26 @@ network AODVNetwork
                 @display("i=device/satellite");
                 aodv.activeRouteTimeout = 6s;
                 interfaceTable.displayAddresses = true;
-                aodv.ttlStart = 1;
-                numWlanInterfaces=0;
-                numEthInterfaces=3;
-                aodv.interface = "eth0";
+                aodv.ttlStart = 20;
+                //numWlanInterfaces=0;
+                //numEthInterfaces=3;
+               // aodv.interface = "eth0";
+				
         }
-        hostSendHub[numHosts]: EtherHub{
-
-                       }
+//        hostSendHub[numHosts]: EtherHub{
+//
+//                       }
         
     connections allowunconnected:
-        for i=0..numHosts-2 {
-            host[i].ethg[0] <--> ethline <--> hostSendHub[i].ethg++;
-            host[i].ethg[1] <--> ethline <--> hostSendHub[i+1].ethg++;
-            hostSendHub[i].ethg++<--> ethline <--> host[i+1].ethg[2];
-           
+//        for i=0..numHosts-2 {
+//            //withhub
+//            host[i].ethg[0] <--> ethline <--> hostSendHub[i].ethg++;
+//            host[i].ethg[1] <--> ethline <--> hostSendHub[i+1].ethg++;
+//            hostSendHub[i].ethg++<--> ethline <--> host[i+1].ethg[2];
+            
+            //withouthub         
+//            host[i].ethg++ <--> ethline <--> host[i+1].ethg++; 
             
             
-        }
+//        }
 }
